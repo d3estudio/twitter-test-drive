@@ -52,41 +52,57 @@ export default class AdminController {
 
         var prom;
         if(!req.session.handle && req.query.key) {
-            prom =
+            prom = SecretKey.findOne({ secretKey: req.query.key })
+                .then((k) => {
+                    if(!k) {
+                        return Promise.reject('Missing secret key.');
+                    } else {
+                        return k.handle;
+                    }
+                });
+        } else {
+            prom = Promise.resolve(req.session.handle);
         }
 
-
-
-
-
-        if(req.session.isSuperUser) {
-            filter.handle = req.params.handle;
-        }
-
-        if(req.params.campaign.toLowerCase() === 'all') {
-            delete filter['campaign'];
-        }
-
-        Inquiry.find(filter, { handle: 0, _id: 0, __v: 0 })
-            .then((docs) => {
-                if(req.params.type === 'json') {
-                    return res.json(docs);
-                } else {
-                    var fields = ['name', 'document', 'email', 'handle'];
-                    if(req.params.campaign.toLowerCase() === 'all') {
-                        fields.push('campaign');
-                    };
-                    json2csv({ data: docs, fields: fields }, function(err, csv) {
-                        if (err) {
-                            console.log('[Download] CSV Conversion failed:');
-                            console.error(err);
-                            console.log('');
-                            return res.status(500).send('Internal server error.');
-                        }
-                        res.set('Content-Type', 'text/plain');
-                        return res.send(csv);
-                    });
-                }
-            });
+        return prom.then((handle) => {
+            if(req.session.isSuperUser) {
+                handle = req.params.handle;
+            }
+            return handle;
+        })
+        .then((handle) => {
+            filter.handle = handle;
+            if(req.params.campaign.toLowerCase() === 'all') {
+                delete filter['campaign'];
+            }
+            return filter;
+        })
+        .then((filter) => {
+            return Inquiry.find(filter, { handle: 0, _id: 0, __v: 0 })
+        })
+        .then((docs) => {
+            if(req.params.type === 'json') {
+                return res.json(docs);
+            } else {
+                var fields = ['name', 'document', 'email', 'handle'];
+                if(req.params.campaign.toLowerCase() === 'all') {
+                    fields.push('campaign');
+                };
+                json2csv({ data: docs, fields: fields }, function(err, csv) {
+                    if (err) {
+                        console.log('[Download] CSV Conversion failed:');
+                        console.error(err);
+                        console.log('');
+                        return res.status(500).send('Internal server error.');
+                    }
+                    res.set('Content-Type', 'text/plain');
+                    return res.send(csv);
+                });
+            }
+        })
+        .catch(ex => {
+            console.error(ex);
+            return res.status(500).send('Internal server error.');
+        });
     }
 }
