@@ -10,9 +10,9 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <form action="/{{automaker}}" method="POST">
-        <label for="handle">Nome do usuário:</label>
-        <input id="handle" name="handle" type="text" required="true" value="{{ handle }}"><br/>
+    <form action="/{{handle}}/{{campaign}}" method="POST">
+        <label for="userHandle">Nome do usuário:</label>
+        <input id="userHandle" name="userHandle" type="text" required="true" value="{{ userHandle }}"><br/>
         <label for="name">Nome completo:</label>
         <input id="name" name="name" type="text" required="true" value="{{ name }}"><br />
         <label for="document">CPF:</label>

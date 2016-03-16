@@ -53,10 +53,8 @@ app
     .get('/session/twitter', SessionController.callback)
 
     .get('/:handle/:campaign', IndexController.automaker)
-    .post('/:handle/:campaign', IndexController.create)
-    // .post('/session')
+    .post('/:handle/:campaign', IndexController.create);
     // .post('/session/delete')
-    // .get('/:automaker/:model', IndexController.automakerWithModel);
 
 mongoose.connect(s.databaseUri);
 

@@ -3,17 +3,18 @@ import Inquiry from '../models/inquiry';
 
 export default class IndexController {
     static automaker(req, res) {
-        if(!req.params.automaker) {
+        if(!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
         }
         res.render('automaker.html', {
-            automaker: req.params.automaker
+            handle: req.params.handle,
+            campaign: req.params.campaign
         });
     }
 
     static create(req, res) {
         var validators = {
-            handle: {
+            userHandle: {
                 validator: (handle) => /^@?(\w){1,15}$/.test(handle),
                 message: 'Insira um nome de usuário válido'
             },
@@ -34,7 +35,8 @@ export default class IndexController {
         var errors = [],
             responseObject = {
                 errors: errors,
-                automaker: req.params.automaker
+                handle: req.params.handle,
+                campaign: req.params.campaign
             };
         Object.keys(validators)
             .forEach(k => {
