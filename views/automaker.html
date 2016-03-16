@@ -1,0 +1,24 @@
+{% if success %}
+    <h1>Enviado</h1>
+    <p>Obrigado, entraremos em contato em breve!</p>
+{% else %}
+    <h1>Olá! Complete o formulário para requisitar um test-drive!</h1>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/{{automaker}}" method="POST">
+        <label for="handle">Nome do usuário:</label>
+        <input id="handle" name="handle" type="text" required="true" value="{{ handle }}"><br/>
+        <label for="name">Nome completo:</label>
+        <input id="name" name="name" type="text" required="true" value="{{ name }}"><br />
+        <label for="document">CPF:</label>
+        <input type="text" id="document" name="document" required="true" value="{{ document }}"><br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required="true" value="{{ email }}"><br />
+        <input type="submit" value="Enviar">
+    </form>
+{% endif %}

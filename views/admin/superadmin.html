@@ -1,0 +1,9 @@
+<h1>@{{ handle }}'s Super Dashboard</h1>
+<code>Secret Key: {{ secretKey }}<br/>
+isSuperUser: {{ isSuperUser }}</code><br />
+
+{% for handle in handleKeys %}
+    <h2>{{ handle }}</h2>
+    <a href="/admin/download/{{ handle }}/all/json">JSON</a>
+    <a href="/admin/download/{{ handle }}/all/csv">CSV</a>
+{% endfor %}
