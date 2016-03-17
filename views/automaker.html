@@ -8,9 +8,9 @@
 </div>
 {% else %}
 <div class="header">
-    <img class="logo" src="/img/logo.png" />
-    <p class="name">Tesla Motors</p>
-    <p class="handle">@teslamotors</p>
+    <img class="logo" src="https://twitter.com/{{handle}}/profile_image?size=original" />
+    <p class="name">{{realName}}</p>
+    <p class="handle">@{{handle}}</p>
 </div>
 <h1>Olá! Complete o formulário para requisitar um test-drive!</h1>
 <form class="validate" action="/{{handle}}/{{campaign}}" method="POST">
