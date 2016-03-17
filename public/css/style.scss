@@ -83,7 +83,6 @@ body {
                 padding: 0;
             }
             button {
-                float: right;
                 background: #1DA1F1;
                 border-radius: 5px;
                 color: #ffffff;
@@ -102,6 +101,7 @@ body {
                 position: relative;
                 margin: 0 0 20px;
                 width: 100%;
+                text-align: center;
             }
             .field input {
                 transition: 0.1s all linear;

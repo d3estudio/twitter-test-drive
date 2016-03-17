@@ -20,8 +20,6 @@ $('input').each(function() {
     }
 });
 
-$('#document').mask('000.000.000-00');
-
 $('.validate').submit(function() {
     var valid = true;
     $(this).find('input').each(function() {
