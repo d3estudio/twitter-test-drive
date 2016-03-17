@@ -32,5 +32,8 @@ $('.validate').submit(function() {
             $(this).parent().removeClass('error');
         }
     });
+    if (valid) {
+        $('.preload').fadeIn();
+    }
     return valid;
 });
