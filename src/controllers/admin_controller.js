@@ -98,7 +98,7 @@ export default class AdminController {
             if(req.params.type === 'json') {
                 return res.json(docs);
             } else {
-                var fields = ['name', 'document', 'email', 'handle'];
+                var fields = ['name', 'document', 'email'];
                 if(req.params.campaign.toLowerCase() === 'all') {
                     fields.push('campaign');
                 };
