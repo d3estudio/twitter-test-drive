@@ -2,8 +2,10 @@
 <code>Secret Key: {{ secretKey }}<br/>
 isSuperUser: {{ isSuperUser }}</code><br />
 
-{% for handle in handleKeys %}
-    <h2>{{ handle }}</h2>
-    <a href="/admin/download/{{ handle }}/all/json">JSON</a>
-    <a href="/admin/download/{{ handle }}/all/csv">CSV</a>
+{% for data in handles %}
+    <pre>{{ JSON.stringify(data) }}</pre><br />
+    <h2>{{ data.handle }}</h2>
+    <code>SecretKey: {{ data.secretKey }}</code><br/>
+    <a href="/admin/download/{{ data.handle }}/all/json">JSON</a>
+    <a href="/admin/download/{{ data.handle }}/all/csv">CSV</a>
 {% endfor %}
