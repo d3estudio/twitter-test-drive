@@ -90,4 +90,9 @@ export default class SessionController {
             }
         });
     }
+
+    static destroy(req, res) {
+        ['requestToken', 'requestTokenSecret', 'handle', 'secretKey', 'isSuperUser'].forEach(k => { req.session[k] = null });
+        return res.json({ success: true });
+    }
 }

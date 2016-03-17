@@ -51,10 +51,9 @@ app
     .get('/admin/download/:handle/:campaign/:type', AdminController.download)
     .get('/session', SessionController.index)
     .get('/session/twitter', SessionController.callback)
-
+    .post('/session/delete', SessionController.destroy)
     .get('/:handle/:campaign', IndexController.automaker)
     .post('/:handle/:campaign', IndexController.create);
-    // .post('/session/delete')
 
 mongoose.connect(s.databaseUri);
 
