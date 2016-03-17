@@ -5,7 +5,8 @@ const inquirySchema = mongoose.Schema({
     name:       { type: String, required: true },
     document:   { type: String, required: true },
     email:      { type: String, required: true },
-    userHandle: { type: String, required: true },
+    // we do not need this anymore
+    // userHandle: { type: String, required: true },
     campaign:   { type: String, required: true }
 });
 
