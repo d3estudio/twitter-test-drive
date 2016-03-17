@@ -21,3 +21,16 @@ $('input').each(function() {
 });
 
 $('#document').mask('000.000.000-00');
+
+$('.validate').submit(function() {
+    var valid = true;
+    $(this).find('input').each(function() {
+        if ($(this).val() == '') {
+            valid = false;
+            $(this).parent().addClass('error');
+        } else {
+            $(this).parent().removeClass('error');
+        }
+    });
+    return valid;
+});
