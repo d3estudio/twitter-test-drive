@@ -63,7 +63,7 @@ export default class IndexController {
                 } else {
                     return Inquiry.create(responseObject)
                         .then(() => {
-                            return res.render('automaker.html', { success: true });
+                            return res.render('automaker.html', { success: true, handle: req.params.handle });
                         })
                         .catch((ex) => {
                             console.log(ex);
