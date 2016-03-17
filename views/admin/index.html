@@ -9,7 +9,7 @@
 
 <body>
     <div class="header">
-        @{{ handle }}'s Dashboard <a href="/logout/">logout</a>
+        @{{ handle }}'s Dashboard <a class="logout" href="#">logout</a>
     </div>
     <div class="content">
         <h1>Olá, @{{ handle }}</h1> {% for card in handles %}
@@ -26,6 +26,8 @@
         {% endfor %}
         <div class="clear"></div>
     </div>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="/js/admin.min.js"></script>
 </body>
 
 </html>
