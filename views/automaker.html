@@ -22,16 +22,16 @@
     </ul>
     {% endif %}
     <div class="field">
-        <label for="name">Nome Completo</label>
-        <input id="name" name="name" type="text" value="{{ name }}" tabindex="1">
+        <!-- <label for="name">Nome Completo</label> -->
+        <input id="name" name="name" type="text" value="{{ name }}" tabindex="1" placeholder="Nome Completo">
     </div>
     <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" value="{{ email }}" tabindex="2" autocorrect="off" autocapitalize="off">
+        <!-- <label for="email">Email</label> -->
+        <input id="email" name="email" type="email" value="{{ email }}" tabindex="2" autocorrect="off" autocapitalize="off" placeholder="Email">
     </div>
     <div class="field">
-        <label for="document">CPF</label>
-        <input id="document" name="document" type="number" inputmode="numeric" pattern="\d*"  value="{{ document }}" tabindex="3">
+        <!-- <label for="document">CPF</label> -->
+        <input id="document" name="document" type="number" inputmode="numeric" pattern="\d*"  value="{{ document }}" tabindex="3" placeholder="CPF">
     </div>
     <div class="field">
         <button type="submit">Enviar</button>
