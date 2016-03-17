@@ -1,15 +1,23 @@
 import Utils from '../utils';
 import Inquiry from '../models/inquiry';
+import https from 'https';
+import cheerio from 'cheerio';
+
+var realNames = {};
 
 export default class IndexController {
     static automaker(req, res) {
         if(!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
         }
-        res.render('automaker.html', {
-            handle: req.params.handle,
-            campaign: req.params.campaign
-        });
+        IndexController.nameOf(req.params.handle)
+            .then((name) => {
+                res.render('automaker.html', {
+                    handle: req.params.handle,
+                    campaign: req.params.campaign,
+                    realName: name
+                });
+            });
     }
 
     static create(req, res) {
@@ -39,26 +47,50 @@ export default class IndexController {
                 handle: req.params.handle,
                 campaign: req.params.campaign
             };
-        Object.keys(validators)
-            .forEach(k => {
-                responseObject[k] = req.body[k];
-                if(!validators[k].validator(req.body[k])) {
-                    errors.push(validators[k].message);
+        IndexController.nameOf(req.params.handle)
+            .then((name) => {
+                responseObject.realName = name;
+                Object.keys(validators)
+                    .forEach(k => {
+                        responseObject[k] = req.body[k];
+                        if(!validators[k].validator(req.body[k])) {
+                            errors.push(validators[k].message);
+                        }
+                    });
+
+                if(errors.length) {
+                    return res.render('automaker.html', responseObject);
+                } else {
+                    return Inquiry.create(responseObject)
+                        .then(() => {
+                            return res.render('automaker.html', { success: true });
+                        })
+                        .catch((ex) => {
+                            console.log(ex);
+                            responseObject.errors.push('Ocorreu um erro ao processar a solicitação.');
+                            return res.render('automaker.html', responseObject);
+                        })
                 }
             });
+    }
 
-        if(errors.length) {
-            return res.render('automaker.html', responseObject);
+    static nameOf(handle) {
+        if(realNames[handle]) {
+            return Promise.resolve(realNames[handle]);
         } else {
-            return Inquiry.create(responseObject)
-                .then(() => {
-                    return res.render('automaker.html', { success: true });
-                })
-                .catch((ex) => {
-                    console.log(ex);
-                    responseObject.errors.push('Ocorreu um erro ao processar a solicitação.');
-                    return res.render('automaker.html', responseObject);
-                })
+            return new Promise((resolve, reject) => {
+                https.get(`https://twitter.com/${handle}`, (res) => {
+                    var result = '';
+                    res.on('data', (d) => {
+                        result += d;
+                    });
+                    res.on('end', () => {
+                        var $ = cheerio.load(result);
+                        realNames[handle] = $('strong.fullname').first().text();
+                        resolve(realNames[handle]);
+                    });
+                }).on('error', () => { resolve(''); });
+            });
         }
     }
 }
