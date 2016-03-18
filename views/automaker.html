@@ -3,8 +3,8 @@
 {% if success %}
 <div class="message">
     <img class="icon" src="/img/sent.png" />
-    <h1>Enviado</h1>
-    <p>Obrigado, entraremos em contato em breve!</p>
+    <h1>#testdrive solicitado</h1>
+    <p>Muito obrigado. Agora é só esperar a nossa equipe entrar em contato para marcar a melhor data e local.</p>
 </div>
 {% else %}
 <div class="header">
@@ -12,7 +12,7 @@
     <p class="name">{{realName}}</p>
     <p class="handle">@{{handle}}</p>
 </div>
-<h1>Olá! Complete o formulário para requisitar um test-drive!</h1>
+<h1>Para marcar o seu #testdrive é bem fácil. Complete esse formulário que a gente te retorna com algumas opções.</h1>
 <form class="validate" action="/{{handle}}/{{campaign}}" method="POST">
     {% if errors %}
     <ul class="errors">
