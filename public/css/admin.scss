@@ -23,7 +23,7 @@ body {
             border: 2px solid #ffffff;
             border-radius: 5px;
             font-size: 12px;
-            margin-top:-5px;
+            margin-top: -5px;
             color: #ffffff;
             text-decoration: none;
         }
@@ -31,17 +31,18 @@ body {
     .content {
         padding: 35px 40px;
         h1 {
-            color: #55ACEE;
+            color: #001d33;
             font-size: 24*0.75px;
             margin: 0 1.5% 20px;
+            font-weight: lighter;
         }
         .card {
             width: 30%;
-            float:left;
+            float: left;
             margin: 7px 1.5%;
             background: #ffffff;
             padding: 20px 40px;
-            box-shadow: 1px 1px rgb(217, 217, 217), 2px 2px rgb(217, 217, 217), 3px 3px rgb(217, 217, 217), 4px 4px rgb(217, 217, 217), 5px 5px rgb(217, 217, 217);
+            box-shadow: 1px 1px rgb(217, 217, 217), 2px 2px rgb(217, 217, 217), 3px 3px rgb(217, 217, 217);
             span.handle {
                 font-size: 20*0.75px;
                 margin-bottom: 5px;
@@ -49,20 +50,30 @@ body {
             }
             span.key {
                 font-size: 15*0.75px;
-                padding:3px 0px;
+                padding: 0;
                 color: #AEAEAE;
                 font-family: monospace;
-                background: url(../img/key.png) left center no-repeat;
-                padding-left: 20px;
+                background: url("../img/key.png") left top no-repeat;
+                background-size: 10px;
+                padding-left: 14px;
             }
             a {
                 float: right;
                 margin-left: 40px;
-
-                img{
-                    height:48*0.75px;
+                img {
+                    height: 48*0.75px;
                 }
             }
         }
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .card {
+        width: 47% !important;
+    }
+}
+@media only screen and (max-width: 780px) {
+    .card {
+        width: 97% !important;
     }
 }
