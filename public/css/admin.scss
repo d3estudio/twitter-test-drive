@@ -12,10 +12,16 @@
 body {
     background: #f9f9f9;
     .header {
-        background: #1DA1F1;
-        padding: 20px 40px;
-        color: #ffffff;
-        font-size: 24*0.75px;
+        background: #55acee;
+        padding: 12px 40px;
+        img {
+            margin-right: 12px;
+            height:20px;
+        }
+        span {
+            color: #ffffff;
+            font-size: 24*0.75px;
+        }
         a {
             float: right;
             display: block;

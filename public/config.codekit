@@ -129,6 +129,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/twitter.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 705,
+		"inputAbbreviatedPath": "\/img\/twitter.png",
+		"outputAbbreviatedPath": "\/img\/twitter.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/js\/admin.js": {
 		"fileType": 64,
 		"ignore": 0,
