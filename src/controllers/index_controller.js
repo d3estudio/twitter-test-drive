@@ -10,6 +10,7 @@ export default class IndexController {
         if(!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
         }
+        req.params.handle = req.params.handle.replace(/@/g, '');
         IndexController.nameOf(req.params.handle)
             .then((name) => {
                 res.render('automaker.html', {
@@ -40,6 +41,8 @@ export default class IndexController {
                 message: 'Insira um email válido'
             }
         };
+
+        req.params.handle = req.params.handle.replace(/@/g, '');
 
         var errors = [],
             responseObject = {
