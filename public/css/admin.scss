@@ -49,8 +49,11 @@ body {
             }
             span.key {
                 font-size: 15*0.75px;
+                padding:3px 0px;
                 color: #AEAEAE;
                 font-family: monospace;
+                background: url(../img/key.png) left center no-repeat;
+                padding-left: 20px;
             }
             a {
                 float: right;
