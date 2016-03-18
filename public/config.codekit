@@ -151,28 +151,6 @@
 		"outputStyle": 2,
 		"syntaxCheckerStyle": 0
 		},
-	"\/js\/mask.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/mask.js",
-		"outputAbbreviatedPath": "\/js\/mask.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 2,
-		"syntaxCheckerStyle": 0
-		},
-	"\/js\/mask.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/mask.min.js",
-		"outputAbbreviatedPath": "\/js\/mask.min.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 2,
-		"syntaxCheckerStyle": 0
-		},
 	"\/js\/script.js": {
 		"fileType": 64,
 		"ignore": 0,

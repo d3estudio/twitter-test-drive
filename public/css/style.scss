@@ -87,12 +87,13 @@ body {
                 color: #ffffff;
                 font-size: 14px;
                 padding: 10px 15px;
+                float: right;
             }
             input {
                 width: 100%;
                 padding: 10px 10px 10px 5px;
                 font-size: 14px;
-                color: #001d33;
+                color: #1DA1F1;
                 border-bottom: 1px solid #8899A6;
             }
             .field {
@@ -100,7 +101,6 @@ body {
                 position: relative;
                 margin: 0 0 20px;
                 width: 100%;
-                text-align: center;
             }
             .field input {
                 transition: 0.1s all linear;
@@ -129,37 +129,37 @@ body {
                 margin-bottom: 27px;
                 li {
                     color: #FF8080;
-                    font-size:14px;
-                    padding: 5px 0px;
+                    font-size: 14px;
+                    padding: 5px 0;
                 }
             }
         }
         .message {
             position: fixed;
-            left:50%;
-            top:10%;
-            width:160px;
-            margin-left:-80px;
-
-            .icon, .reload {
-                margin: 0px 0px 10px 0px;
-                width:37px;
+            left: 50%;
+            top: 10%;
+            width: 160px;
+            margin-left: -80px;
+            .icon,
+            .reload {
+                margin: 0 0 10px;
+                width: 37px;
                 margin-left: 61px;
             }
             .reload {
-                margin-top:40px;
+                margin-top: 40px;
             }
             h1 {
                 display: block;
                 text-align: center;
-                color:#55ACEE;
-                font-size:27px;
+                color: #55ACEE;
+                font-size: 27px;
                 margin-bottom: 25px;
             }
             p {
                 display: block;
                 text-align: center;
-                font-size:15px;
+                font-size: 15px;
             }
         }
     }
