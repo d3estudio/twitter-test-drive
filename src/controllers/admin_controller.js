@@ -1,5 +1,6 @@
 import Inquiry from '../models/inquiry';
 import SecretKey from '../models/secret_key';
+import Log from '../models/log';
 import * as Promise from 'bluebird';
 import json2csv from 'json2csv';
 
@@ -95,6 +96,15 @@ export default class AdminController {
             return Inquiry.find(filter, { handle: 0, _id: 0, __v: 0 })
         })
         .then((docs) => {
+            Log.create({
+                targetHandle: filter.handle,
+                impersonated: !!req.query.key,
+                targetHandle: req.session.handle || null,
+                operation: Log.DOWNLOAD,
+                extra: {
+                    campaign: req.params.campaign.toLowerCase()
+                }
+            });
             if(req.params.type === 'json') {
                 return res.json(docs);
             } else {
