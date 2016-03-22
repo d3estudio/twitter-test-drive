@@ -1,5 +1,6 @@
 import Inquiry from '../models/inquiry';
 import SecretKey from '../models/secret_key';
+import SuperUser from '../models/superuser';
 import Log from '../models/log';
 import * as Promise from 'bluebird';
 import json2csv from 'json2csv';
@@ -62,47 +63,18 @@ export default class AdminController {
             handle: req.session.handle,
             secretKey: req.session.secretKey,
             isSuperUser: req.session.isSuperUser,
-            handles: []
+            targetHandle: {
+                handle: req.params.handle,
+                secretKey: SecretKey.findOne({ handle: req.params.handle }),
+                campaigns: Inquiry.find({ handle: req.params.handle }).distinct('campaign')
+            }
         };
 
-        var filter = { handle: req.session.handle },
-            next = 'admin/detail.html';
-
-        var handles = {},
-            otherProms = {};
-
-        Inquiry.find(filter)
-            .distinct('handle')
-            .then((handles) => {
-                handles.forEach(h => {
-                    handles[h] = {
-                        handle: h,
-                        secretKey: null,
-                        campaigns: []
-                    };
-                    otherProms[`${h}_campaigns`] = Inquiry.find({ handle: h }).distinct('campaign');
-                    otherProms[`${h}_secretKey`] = SecretKey.findOne({ handle: h });
-                });
-
-                Promise.props(otherProms)
-                    .then(result => {
-                        handles.forEach(h => {
-                            var sk = result[`${h}_secretKey`];
-                            handles[h].secretKey = sk ? sk.secretKey : null;
-                            handles[h].campaigns = result[`${h}_campaigns`];
-                        });
-                        viewData.handles = handles.map(k => handles[k]);
-                        console.log(viewData);
-                        return res.render(next, viewData);
-                    });
+        Promise.props(viewData.targetHandle)
+            .then(r => {
+                viewData.targetHandle = r;
+                return res.render('admin/detail.html', viewData);
             });
-    }
-
-    static manager(req, res) {
-        if(!req.session.handle) {
-            return res.redirect('/session');
-        }
-        res.render('admin/manager.html')
     }
 
     static download(req, res) {
@@ -179,5 +151,94 @@ export default class AdminController {
             console.error(ex);
             return res.status(500).send('Internal server error.');
         });
+    }
+
+    static listAdmins(req, res) {
+        if(!req.session.handle) {
+            return res.redirect('/session');
+        }
+        if(!req.session.isSuperUser) {
+            return res.redirect(`/admin`);
+        }
+
+        var viewData = {
+            handle: req.session.handle,
+            secretKey: req.session.secretKey,
+            isSuperUser: req.session.isSuperUser,
+            users: []
+        };
+
+        SuperUser.find({}, {parent: 0, _id: 0, __v: 0})
+            .then((arr) => {
+                viewData.users = arr;
+                return res.render('admin/manager.html', viewData);
+            });
+    }
+
+    static addAdmin(req, res) {
+        if(!req.session.handle) {
+            return res.redirect('/session');
+        }
+        if(!req.session.isSuperUser) {
+            return res.redirect('/admin');
+        }
+
+        if(!req.body.handle) {
+            return res.json({ success: false, error: 'Missing handle.' });
+        } else {
+            SuperUser.findOne({ handle: req.body.handle })
+                .then((u) => {
+                    if(u) {
+                        return res.json({ success: true, handle: u.handle })
+                    } else {
+                        SuperUser.create({
+                            handle: req.body.handle,
+                            parent: req.session.handle
+                        }).then((u) => {
+                            Log.create({
+                                targetHandle: req.body.handle,
+                                userHandle: req.session.handle,
+                                operation: Log.ADD_SUPERUSER,
+                            }).catch(console.error);
+                            return res.json({ success: true, handle: u.handle });
+                        }).catch((ex) => {
+                            return res.json({ success: false, error: ex.message });
+                        });
+                    }
+                });
+        }
+    }
+
+    static removeAdmin(req, res) {
+        if(!req.session.handle) {
+            return res.redirect('/session');
+        }
+        if(!req.session.isSuperUser) {
+            return res.redirect('/admin');
+        }
+
+        if(!req.body.handle) {
+            return res.json({ success: false, error: 'Missing handle.' });
+        } else {
+            SuperUser.findOne({ handle: req.body.handle })
+                .then((u) => {
+                    if(!u) {
+                        return res.json({ success: false, error: 'Handle not found.' });
+                    } else {
+                        u.remove()
+                            .then(() => {
+                                Log.create({
+                                    targetHandle: req.body.handle,
+                                    userHandle: req.session.handle,
+                                    operation: Log.REMOVE_SUPERUSER,
+                                }).catch(console.error);
+                                return res.json({ success: true });
+                            })
+                            .catch((ex) => {
+                                return res.error({ success: false, error: ex.message });
+                            });
+                    }
+                });
+        }
     }
 }

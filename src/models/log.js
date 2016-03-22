@@ -15,5 +15,6 @@ logSchema.statics.ofType = function(operation) {
 logSchema.statics.DOWNLOAD = 'download';
 logSchema.statics.CHANGE_SECRET_KEY = 'changeSecretKey';
 logSchema.statics.ADD_SUPERUSER = 'addSuperuser';
+logSchema.statics.REMOVE_SUPERUSER = 'removeSuperuser';
 
 export default mongoose.model('Log', logSchema);

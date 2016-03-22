@@ -3,24 +3,24 @@
 <h1>Olá, @{{ handle }}</h1>
 <div class="card selected">
     <img class="logo" src="https://twitter.com/{{handle}}/profile_image?size=original" />
-    <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
+    <a href="/admin/download/{{ targetHandle.handle }}/all/json" target="_blank">
         <img src="/img/json.png" />
     </a>
-    <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
+    <a href="/admin/download/{{ targetHandle.handle }}/all/csv" target="_blank">
         <img src="/img/csv.png" />
     </a>
-    <span class="handle">@{{handle}}</span>
-    <span class="key">{{secretKey}}</span>
+    <span class="handle">@{{targetHandle.handle}}</span>
+    <span class="key">{{targetHandle.secretKey.secretKey}}</span>
 </div>
-{% for card in handles %}
+{% for c in targetHandle.campaigns %}
 <div class="card">
-    <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
+    <a href="/admin/download/{{ targetHandle.handle }}/{{ c }}/json" target="_blank">
         <img src="/img/json.png" />
     </a>
-    <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
+    <a href="/admin/download/{{ targetHandle.handle }}/{{ c }}/csv" target="_blank">
         <img src="/img/csv.png" />
     </a>
-    <span class="campaignName">test-drive-model-is</span>
+    <span class="campaignName">{{ c }}</span>
     <span class="viewTweet"><a href="#">Veja o Tweet</a></span>
 </div>
 {% endfor %}

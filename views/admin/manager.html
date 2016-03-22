@@ -7,16 +7,10 @@
 </div>
 <div class="clear"></div>
 <div class="card admin">
+{% for user in users %}
     <img src="/img/save.png" class="status" />
-    <span class="username">@username</span>
+    <span class="username">@{{ user.handle }}</span>
     <hr />
-    <img src="/img/save.png" class="status" />
-    <span class="username">@username</span>
-    <hr />
-    <img src="/img/save.png" class="status" />
-    <span class="username">@username</span>
-    <hr />
-    <img src="/img/save.png" class="status" />
-    <span class="username">@username</span>
+{% endfor %}
 </div>
 {% endblock %}

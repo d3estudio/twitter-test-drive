@@ -46,12 +46,12 @@ app
     .use(ExpressSession(sessionConfig))
     .engine('html', consolidate.swig);
 
-app
-    .get('/admin', AdminController.index)
+app.get('/admin', AdminController.index)
+    .get('/admin/users', AdminController.listAdmins)
+    .post('/admin/users', AdminController.addAdmin)
+    .post('/admin/users/delete', AdminController.removeAdmin)
     .get('/admin/download/:handle/:campaign/:type', AdminController.download)
-    // this sessions needs to be coded on the controllers
-    .get('/admin/detail', AdminController.detail)
-    .get('/admin/manager', AdminController.manager)
+    .get('/admin/detail/:handle', AdminController.detail)
     .get('/session', SessionController.index)
     .get('/session/twitter', SessionController.callback)
     .post('/session/delete', SessionController.destroy)
