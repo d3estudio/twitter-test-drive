@@ -54,6 +54,57 @@ export default class AdminController {
             });
     }
 
+    static detail(req, res) {
+        if(!req.session.handle) {
+            return res.redirect('/session');
+        }
+        var viewData = {
+            handle: req.session.handle,
+            secretKey: req.session.secretKey,
+            isSuperUser: req.session.isSuperUser,
+            handles: []
+        };
+
+        var filter = { handle: req.session.handle },
+            next = 'admin/detail.html';
+
+        var handles = {},
+            otherProms = {};
+
+        Inquiry.find(filter)
+            .distinct('handle')
+            .then((handles) => {
+                handles.forEach(h => {
+                    handles[h] = {
+                        handle: h,
+                        secretKey: null,
+                        campaigns: []
+                    };
+                    otherProms[`${h}_campaigns`] = Inquiry.find({ handle: h }).distinct('campaign');
+                    otherProms[`${h}_secretKey`] = SecretKey.findOne({ handle: h });
+                });
+
+                Promise.props(otherProms)
+                    .then(result => {
+                        handles.forEach(h => {
+                            var sk = result[`${h}_secretKey`];
+                            handles[h].secretKey = sk ? sk.secretKey : null;
+                            handles[h].campaigns = result[`${h}_campaigns`];
+                        });
+                        viewData.handles = handles.map(k => handles[k]);
+                        console.log(viewData);
+                        return res.render(next, viewData);
+                    });
+            });
+    }
+
+    static manager(req, res) {
+        if(!req.session.handle) {
+            return res.redirect('/session');
+        }
+        res.render('admin/manager.html')
+    }
+
     static download(req, res) {
         if(!req.session.handle && !req.query.key) {
             return res.redirect('/admin');

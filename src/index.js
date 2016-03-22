@@ -49,11 +49,15 @@ app
 app
     .get('/admin', AdminController.index)
     .get('/admin/download/:handle/:campaign/:type', AdminController.download)
+    // this sessions needs to be coded on the controllers
+    .get('/admin/detail', AdminController.detail)
+    .get('/admin/manager', AdminController.manager)
     .get('/session', SessionController.index)
     .get('/session/twitter', SessionController.callback)
     .post('/session/delete', SessionController.destroy)
     .get('/:handle/:campaign', IndexController.automaker)
     .post('/:handle/:campaign', IndexController.create);
+
 
 mongoose.connect(s.databaseUri);
 
