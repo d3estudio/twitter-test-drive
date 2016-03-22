@@ -9,6 +9,9 @@
     list-style: none;
     list-style-type: none;
 }
+.clear {
+    clear: both;
+}
 body {
     background: #f9f9f9;
     .header {
@@ -16,22 +19,49 @@ body {
         padding: 12px 40px;
         img {
             margin-right: 12px;
-            height:20px;
+            height: 20px;
         }
         span {
             color: #ffffff;
             font-size: 24*0.75px;
         }
-        a {
+        span.menu {
             float: right;
             display: block;
-            padding: 5px 10px;
-            border: 2px solid #ffffff;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-top: -5px;
-            color: #ffffff;
-            text-decoration: none;
+            padding: 25px;
+            margin-top: -12px;
+            background: url("../img/settings.png") center center no-repeat;
+            cursor: pointer;
+            position: relative;
+            ul.submenu {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                overflow: hidden;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                padding: 10px 0;
+                background: #ffffff;
+                box-shadow: 1px 1px rgb(217, 217, 217), 2px 2px rgb(217, 217, 217), 3px 3px rgb(217, 217, 217);
+                li {
+                    a {
+                        display: block;
+                        color: #55acee;
+                        padding: 13px 10px 10px 0;
+                        width: 150px;
+                        text-align: right;
+                        text-decoration: none;
+                        font-size: 18px;
+                    }
+                }
+            }
+            &:hover {
+                background: url("../img/settingsHover.png") center center no-repeat #ffffff;
+                ul.submenu {
+                    display: block;
+                }
+            }
         }
     }
     .content {
@@ -63,11 +93,87 @@ body {
                 background-size: 10px;
                 padding-left: 14px;
             }
+            span.campaignName {
+                font-size: 19px;
+                font-weight: bold;
+                display: block;
+            }
+            span.viewTweet {
+                float: left;
+                a {
+                    font-size: 19px;
+                    display: inline;
+                    margin: 0;
+                    color: #55acee;
+                    text-decoration: none;
+                    font-size: 19px;
+                    margin-top: 4px;
+                }
+            }
             a {
                 float: right;
                 margin-left: 40px;
                 img {
                     height: 48*0.75px;
+                }
+
+                &.detail {
+                    float: none;
+                    text-decoration: none;
+                    margin: 0;
+                }
+            }
+            hr {
+                border: 1px solid #dddddd;
+                clear: both;
+                margin: 10px 0;
+            }
+            img.edit {
+                float: right;
+                cursor: pointer;
+            }
+            input {
+                padding: 5px 5px 5px 20px;
+                width: 90%;
+                float: left;
+                font-size: 17px;
+                color: #AEAEAE;
+                background: url("../img/moments.png") left center no-repeat;
+            }
+            &.selected {
+                width: 96%;
+                background: #EBEBEB;
+                .logo {
+                    width: 48px;
+                    border-radius: 5px;
+                    margin-right: 20px;
+                    float: left;
+                }
+                span.key {
+                    background-size: auto;
+                    font-size: 16px;
+                    padding-left: 15px;
+                }
+                a {
+                    img {
+                        height: 48px;
+                    }
+                }
+            }
+            &.admin {
+                padding: 35px 40px;
+                .username {
+                    font-size: 19px;
+                    color: #aeaeae;
+                    strong {
+                        color: #55acee;
+                    }
+                }
+                .status {
+                    float: right;
+                }
+                hr{
+                    margin: 20px 0px;
                 }
             }
         }

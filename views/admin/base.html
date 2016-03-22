@@ -9,7 +9,17 @@
 
 <body>
     <div class="header">
-        <img src="/img/twitter.png" /><span>Test Drive Admin</span> <a class="logout" href="#">logout</a>
+        <img src="/img/twitter.png" /><span>Test Drive Admin</span>
+        <span class="menu">
+            <ul class="submenu">
+                <li>
+                    <a href="/admin/manager/">Administradores</a>
+                </li>
+                <li>
+                    <a href="/logout/">Sair</a>
+                </li>
+            </ul>
+        </a>
     </div>
     <div class="content">
         {% block content %}{% endblock %}

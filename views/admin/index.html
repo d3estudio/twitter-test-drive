@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Olá, @{{ handle }}</h1> {% for card in handles %}
+<h1>Olá, @{{ handle }}</h1>
+{% for card in handles %}
 <div class="card">
     <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
         <img src="/img/json.png" />
@@ -8,8 +9,15 @@
     <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
         <img src="/img/csv.png" />
     </a>
-    <span class="handle">@{{card.handle}}</span>
-    <span class="key">{{card.secretKey}}</span>
+    <a class="detail" href="/admin/detail">
+        <span class="handle">@{{card.handle}}</span>
+        <span class="key">{{card.secretKey}}</span>
+    </a>
+    <hr />
+    <img src="/img/edit.png" class="edit" />
+    <!-- <img src="/img/save.png" class="edit" />
+    <img src="/img/saved.png" class="edit" /> -->
+    <input type="text" name="moments" placeholder="Insira aqui o link" />
 </div>
 {% endfor %}
 {% endblock %}

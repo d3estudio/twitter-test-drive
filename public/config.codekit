@@ -63,6 +63,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/edit.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 865,
+		"inputAbbreviatedPath": "\/img\/edit.png",
+		"outputAbbreviatedPath": "\/img\/edit.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/error.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -107,6 +118,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/moments.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 506,
+		"inputAbbreviatedPath": "\/img\/moments.png",
+		"outputAbbreviatedPath": "\/img\/moments.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/reload.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -118,6 +140,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/save.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 450,
+		"inputAbbreviatedPath": "\/img\/save.png",
+		"outputAbbreviatedPath": "\/img\/save.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/saved.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 371,
+		"inputAbbreviatedPath": "\/img\/saved.png",
+		"outputAbbreviatedPath": "\/img\/saved.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/sent.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -125,6 +169,28 @@
 		"initialSize": 4231,
 		"inputAbbreviatedPath": "\/img\/sent.png",
 		"outputAbbreviatedPath": "\/img\/sent.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/settings.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 665,
+		"inputAbbreviatedPath": "\/img\/settings.png",
+		"outputAbbreviatedPath": "\/img\/settings.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/settingsHover.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1227,
+		"inputAbbreviatedPath": "\/img\/settingsHover.png",
+		"outputAbbreviatedPath": "\/img\/settingsHover.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -192,8 +258,8 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "public",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "Twitter Test Drive",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "globe_yellow"
 	},
 "projectSettings": {
