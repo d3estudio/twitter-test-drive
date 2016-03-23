@@ -2,15 +2,17 @@
 {% block content %}
 <h1>Gerenciar Administradores</h1>
 <div class="card admin">
-    <img src="/img/save.png" class="status" />
-    <span class="username"><strong>@</strong>username</span>
+    <img src="/img/save.png" class="save" />
+    <span class="username"><strong>@</strong><input type="username" class="handle" placeholder="username" /></span>
 </div>
 <div class="clear"></div>
 <div class="card admin">
 {% for user in users %}
-    <img src="/img/save.png" class="status" />
-    <span class="username">@{{ user.handle }}</span>
-    <hr />
+    <div class="handles">
+        <img src="/img/remove.png" class="remove" data-handle="{{user.handle}}" />
+        <span class="username">@{{ user.handle }}</span>
+        <hr />
+    </div>
 {% endfor %}
 </div>
 {% endblock %}

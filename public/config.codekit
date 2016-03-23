@@ -140,6 +140,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/remove.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 555,
+		"inputAbbreviatedPath": "\/img\/remove.png",
+		"outputAbbreviatedPath": "\/img\/remove.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/save.png": {
 		"fileType": 32768,
 		"ignore": 0,

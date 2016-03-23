@@ -97,6 +97,7 @@ body {
                 font-size: 19px;
                 font-weight: bold;
                 display: block;
+                margin: 10px 0;
             }
             span.viewTweet {
                 float: left;
@@ -116,7 +117,6 @@ body {
                 img {
                     height: 48*0.75px;
                 }
-
                 &.detail {
                     float: none;
                     text-decoration: none;
@@ -141,7 +141,7 @@ body {
                 background: url("../img/moments.png") left center no-repeat;
             }
             &.selected {
-                width: 96%;
+                width: 96% !important;
                 background: #EBEBEB;
                 .logo {
                     width: 48px;
@@ -169,11 +169,24 @@ body {
                         color: #55acee;
                     }
                 }
-                .status {
+                .save, .remove {
                     float: right;
+                    cursor: pointer;
+                    margin-top:3px;
                 }
-                hr{
-                    margin: 20px 0px;
+                hr {
+                    margin: 20px 0;
+                }
+                strong {
+                    float: left;
+                    display: block;
+                    padding: 5px 0;
+                }
+                input {
+                    background: none;
+                    width: 85%;
+                    float: left;
+                    padding-left: 0;
                 }
             }
         }
