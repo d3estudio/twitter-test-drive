@@ -16,7 +16,6 @@ export default class IndexController {
                 handle: req.params.handle
             })
             .then((result) => {
-                console.log(result);
                 var url;
                 if (result) {
                     url = result.url;
