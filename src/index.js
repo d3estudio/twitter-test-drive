@@ -54,6 +54,7 @@ app
 app.get('/admin', AdminController.index)
     .get('/admin/users', AdminController.listAdmins)
     .post('/admin/users', AdminController.addAdmin)
+    .post('/admin/users/moment', AdminController.updateMoment)
     .post('/admin/users/delete', AdminController.removeAdmin)
     .get('/admin/download/:handle/:campaign/:type', AdminController.download)
     .get('/admin/detail/:handle', AdminController.detail)

@@ -1,5 +1,6 @@
 import Utils from '../utils';
 import Inquiry from '../models/inquiry';
+import Moment from '../models/moment';
 import https from 'https';
 import cheerio from 'cheerio';
 
@@ -7,17 +8,23 @@ var realNames = {};
 
 export default class IndexController {
     static automaker(req, res) {
-        if(!req.params.handle || !req.params.campaign) {
+        if (!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
         }
         req.params.handle = req.params.handle.replace(/@/g, '');
-        IndexController.nameOf(req.params.handle)
-            .then((name) => {
-                res.render('automaker.html', {
-                    handle: req.params.handle,
-                    campaign: req.params.campaign,
-                    realName: name
-                });
+        Moment.findOne({
+                handle: req.params.handle
+            })
+            .then((result) => {
+                IndexController.nameOf(req.params.handle)
+                    .then((name) => {
+                        res.render('automaker.html', {
+                            handle: req.params.handle,
+                            campaign: req.params.campaign,
+                            realName: name,
+                            momentUrl: result[0].url
+                        });
+                    });
             })
             .catch(ex => Utils.recordError(ex));
     }
@@ -57,17 +64,20 @@ export default class IndexController {
                 Object.keys(validators)
                     .forEach(k => {
                         responseObject[k] = req.body[k];
-                        if(!validators[k].validator(req.body[k])) {
+                        if (!validators[k].validator(req.body[k])) {
                             errors.push(validators[k].message);
                         }
                     });
 
-                if(errors.length) {
+                if (errors.length) {
                     return res.render('automaker.html', responseObject);
                 } else {
                     return Inquiry.create(responseObject)
                         .then(() => {
-                            return res.render('automaker.html', { success: true, handle: req.params.handle });
+                            return res.render('automaker.html', {
+                                success: true,
+                                handle: req.params.handle
+                            });
                         })
                         .catch((ex) => {
                             Utils.recordError(ex);
@@ -79,7 +89,7 @@ export default class IndexController {
     }
 
     static nameOf(handle) {
-        if(realNames[handle]) {
+        if (realNames[handle]) {
             return Promise.resolve(realNames[handle]);
         } else {
             return new Promise((resolve, reject) => {
@@ -93,7 +103,9 @@ export default class IndexController {
                         realNames[handle] = $('strong.fullname').first().text();
                         resolve(realNames[handle]);
                     });
-                }).on('error', () => { resolve(''); });
+                }).on('error', () => {
+                    resolve('');
+                });
             });
         }
     }

@@ -32,7 +32,7 @@ $('.save').click(function() {
             }).then(function(handle) {
                 if (handle.success) {
                     $('.card.admin').eq(1).append(
-                        '<div class="handles"><img src="/img/remove.png" class="remove" data-handle="'+handle.handle+'" /><span class="username">@' + handle.handle + '</span><hr /></div>'
+                        '<div class="handles"><img src="/img/remove.png" class="remove" data-handle="' + handle.handle + '" /><span class="username">@' + handle.handle + '</span><hr /></div>'
                     );
                 }
             });
@@ -55,4 +55,35 @@ $('body').on('click', '.remove', function() {
             }
         });
     }
+});
+
+function saveMoment(element) {
+    $.post({
+        url: '/admin/users/moment',
+        data: {
+            moment: $('.momentURL').val(),
+            handle: $('.momentURL').data('handle')
+        }
+    }).then(function(data) {
+        console.log(data);
+        if (data.success) {
+            element.parent().find('.moment').removeClass('editing').attr('src', '/img/saved.png');
+            setTimeout(function() {
+                element.parent().find('.moment').attr('src', '/img/edit.png');
+            }, 2000);
+        }
+    });
+}
+
+$('.moment').click(function() {
+    if ($(this).hasClass('editing')) {
+        saveMoment($(this).parent().find('.momentURL'));
+    } else {
+        $(this).addClass('editing').attr('src', '/img/save.png');
+        $(this).parent().find('.momentURL').focus();
+    }
+});
+
+$('.momentURL').keydown(function() {
+    $(this).parent().find('.moment').addClass('editing').attr('src', '/img/save.png');
 });
