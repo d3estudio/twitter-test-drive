@@ -14,7 +14,6 @@ secretKeySchema.pre('validate', function(next) {
             sec.push(dict[Math.floor(Math.random() * dict.length)]);
         }
         this.secretKey = sec.join('');
-        console.log('secretKey set: ', this.secretKey);
     }
     next();
 });

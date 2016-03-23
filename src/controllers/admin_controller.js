@@ -51,7 +51,6 @@ export default class AdminController {
                             handles[h].campaigns = result[`${h}_campaigns`];
                         });
                         viewData.handles = handles.map(k => handles[k]);
-                        console.log(viewData);
                         return res.render(next, viewData);
                     })
                     .catch(ex => Utils.recordError(ex));
