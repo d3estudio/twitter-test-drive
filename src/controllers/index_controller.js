@@ -16,13 +16,18 @@ export default class IndexController {
                 handle: req.params.handle
             })
             .then((result) => {
-                IndexController.nameOf(req.params.handle)
+                console.log(result);
+                var url;
+                if (result) {
+                    url = result.url;
+                }
+                return IndexController.nameOf(req.params.handle)
                     .then((name) => {
                         return res.render('automaker.html', {
                             handle: req.params.handle,
                             campaign: req.params.campaign,
                             realName: name,
-                            momentUrl: result ? result[0].url : null
+                            momentUrl: url
                         });
                     });
             })

@@ -51,7 +51,7 @@ export default class AdminController {
                     otherProms[`${h}_moment`] = Moment.findOne({
                         handle: h
                     })
-                }).catch(ex => Utils.recordError(ex));
+                })
 
                 Promise.props(otherProms)
                     .then(result => {

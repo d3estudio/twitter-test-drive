@@ -40,6 +40,8 @@
 </form>
 {% endif %}
 
-<a class="twitter-moment" href="{{momentUrl}}">@{{handle}} moments</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% if momentUrl %}
+<a class="twitter-moment" href="{{momentUrl}}"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endif %}
 
 {% endblock %}
