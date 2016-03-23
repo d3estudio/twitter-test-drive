@@ -12,17 +12,17 @@ export default class IndexController {
             return res.status(400).send('Invalid request.');
         }
         req.params.handle = req.params.handle.replace(/@/g, '');
-        Moment.findOne({
+        return Moment.findOne({
                 handle: req.params.handle
             })
             .then((result) => {
                 IndexController.nameOf(req.params.handle)
                     .then((name) => {
-                        res.render('automaker.html', {
+                        return res.render('automaker.html', {
                             handle: req.params.handle,
                             campaign: req.params.campaign,
                             realName: name,
-                            momentUrl: result[0].url
+                            momentUrl: result ? result[0].url : null
                         });
                     });
             })

@@ -46,6 +46,8 @@ export default class Utils {
         }
     }
     static recordError(ex) {
+        console.log('[Sentry] Exception caught:');
+        console.error(ex);
         let sUri = Settings.sharedInstance().sentryUri;
         if(sUri && !sentryClient) {
             sentryClient = new Client(sUri);
