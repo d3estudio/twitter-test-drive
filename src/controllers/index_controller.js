@@ -18,7 +18,8 @@ export default class IndexController {
                     campaign: req.params.campaign,
                     realName: name
                 });
-            });
+            })
+            .catch(ex => Utils.recordError(ex));
     }
 
     static create(req, res) {
@@ -69,7 +70,7 @@ export default class IndexController {
                             return res.render('automaker.html', { success: true, handle: req.params.handle });
                         })
                         .catch((ex) => {
-                            console.log(ex);
+                            Utils.recordError(ex);
                             responseObject.errors.push('Ocorreu um erro ao processar a solicitação.');
                             return res.render('automaker.html', responseObject);
                         })

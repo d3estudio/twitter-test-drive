@@ -16,7 +16,8 @@ export default class Settings {
             twitterConsumerSecret: null,
             twitterCallbackUri: null,
             secret: null,
-            secretKeyLength: 15
+            secretKeyLength: 15,
+            sentryUri: null
         };
 
         let path = Path.resolve(Path.join(__dirname, '..', '..', 'settings.json'));

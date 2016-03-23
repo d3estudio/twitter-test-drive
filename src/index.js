@@ -10,6 +10,7 @@ import Settings from './models/settings';
 import IndexController from './controllers/index_controller';
 import SessionController from './controllers/session_controller';
 import AdminController from './controllers/admin_controller';
+import Utils from './utils';
 
 var s = Settings.sharedInstance();
 
@@ -22,6 +23,10 @@ if(!s.secret) {
     console.log('WARNING: Secret key is not defined.');
     s.secret = 'secret';
 }
+
+Utils.setupSentry();
+
+process.on('uncaughtException', (ex) => Utils.recordError(ex));
 
 var app = Express(),
     sessionConfig = {

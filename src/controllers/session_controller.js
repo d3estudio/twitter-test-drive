@@ -1,6 +1,7 @@
 import Settings from '../models/settings';
 import SuperUser from '../models/superuser';
 import SecretKey from '../models/secret_key';
+import Utils from '../utils';
 
 import Twitter from 'node-twitter-api';
 
@@ -24,6 +25,7 @@ export default class SessionController {
                     console.log('[Twitter] getRequestToken failed:');
                     console.error(error)
                     console.log('---------------------------------');
+                    Utils.recordError(error);
                     res.render('error.html', {
                         message: 'Houve um problema ao comunicar-se com o Twitter. Tente novamente.'
                     });
@@ -58,6 +60,7 @@ export default class SessionController {
                 console.log('[Twitter] getAccessToken failed:');
                 console.error(error);
                 console.log('---------------------------------');
+                Utils.recordError(error);
                 res.render('error.html', {
                     message: 'Houve um problema ao comunicar-se com o Twitter. Tente novamente.'
                 });
@@ -67,6 +70,7 @@ export default class SessionController {
                         console.log('[Twitter] verifyCredentials failed:');
                         console.error(error);
                         console.log('---------------------------------');
+                        Utils.recordError(error);
                         res.render('error.html', {
                             message: 'Houve um problema ao comunicar-se com o Twitter. Tente novamente.'
                         });
@@ -84,7 +88,8 @@ export default class SessionController {
                                     req.session.secretKey = key.secretKey;
                                 }
                                 return res.redirect('/admin');
-                            });
+                            })
+                            .catch(ex => Utils.recordError(ex));
                     }
                 });
             }

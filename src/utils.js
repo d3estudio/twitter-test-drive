@@ -1,3 +1,8 @@
+import {Client} from 'raven'
+import Settings from './models/settings';
+
+var sentryClient = null;
+
 export default class Utils {
     static validateDocumentNumber(cpf) {
         var j = -1,
@@ -32,5 +37,21 @@ export default class Utils {
     static validateEmail(email) {
         var r = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         return r.test(email);
+    }
+    static setupSentry() {
+        let sUri = Settings.sharedInstance().sentryUri;
+        if(sUri && !sentryClient) {
+            sentryClient = new Client(sUri);
+            sentryClient.patchGlobal();
+        }
+    }
+    static recordError(ex) {
+        let sUri = Settings.sharedInstance().sentryUri;
+        if(sUri && !sentryClient) {
+            sentryClient = new Client(sUri);
+        }
+        if(sentryClient) {
+            sentryClient.captureException(ex);
+        }
     }
 }

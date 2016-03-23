@@ -4,6 +4,7 @@ import SuperUser from '../models/superuser';
 import Log from '../models/log';
 import * as Promise from 'bluebird';
 import json2csv from 'json2csv';
+import Utils from '../utils';
 
 export default class AdminController {
     static index(req, res) {
@@ -39,7 +40,8 @@ export default class AdminController {
                     };
                     otherProms[`${h}_campaigns`] = Inquiry.find({ handle: h }).distinct('campaign');
                     otherProms[`${h}_secretKey`] = SecretKey.findOne({ handle: h });
-                });
+                })
+                .catch(ex => Utils.recordError(ex));
 
                 Promise.props(otherProms)
                     .then(result => {
@@ -51,7 +53,8 @@ export default class AdminController {
                         viewData.handles = handles.map(k => handles[k]);
                         console.log(viewData);
                         return res.render(next, viewData);
-                    });
+                    })
+                    .catch(ex => Utils.recordError(ex));
             });
     }
 
@@ -74,7 +77,8 @@ export default class AdminController {
             .then(r => {
                 viewData.targetHandle = r;
                 return res.render('admin/detail.html', viewData);
-            });
+            })
+            .catch(ex => Utils.recordError(ex));
     }
 
     static download(req, res) {
@@ -148,6 +152,7 @@ export default class AdminController {
             }
         })
         .catch(ex => {
+            Utils.recordError(ex);
             console.error(ex);
             return res.status(500).send('Internal server error.');
         });
@@ -172,7 +177,8 @@ export default class AdminController {
             .then((arr) => {
                 viewData.users = arr;
                 return res.render('admin/manager.html', viewData);
-            });
+            })
+            .catch(ex => Utils.recordError(ex));
     }
 
     static addAdmin(req, res) {
@@ -205,7 +211,8 @@ export default class AdminController {
                             return res.json({ success: false, error: ex.message });
                         });
                     }
-                });
+                })
+                .catch(ex => Utils.recordError(ex));
         }
     }
 
@@ -238,7 +245,8 @@ export default class AdminController {
                                 return res.error({ success: false, error: ex.message });
                             });
                     }
-                });
+                })
+                .catch(ex => Utils.recordError(ex));
         }
     }
 }
