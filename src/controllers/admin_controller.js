@@ -104,10 +104,11 @@ export default class AdminController {
             return res.status(400).send('Invalid type. Please specify either json or csv.');
         }
 
-        var filter = {
-            handle: req.session.handle,
-            campaign: req.params.campaign
-        };
+        var campaign = req.params.compaign.toLowerCase(),
+            filter = {
+                handle: req.session.handle,
+                campaign: campaign
+            };
 
         var prom;
         if (!req.session.handle && req.query.key) {
@@ -127,13 +128,13 @@ export default class AdminController {
 
         return prom.then((handle) => {
                 if (req.session.isSuperUser) {
-                    handle = req.params.handle;
+                    handle = req.params.handle.replace(/@/g, '').toLowerCase()
                 }
                 return handle;
             })
             .then((handle) => {
                 filter.handle = handle;
-                if (req.params.campaign.toLowerCase() === 'all') {
+                if (campaign === 'all') {
                     delete filter['campaign'];
                 }
                 return filter;
@@ -152,14 +153,14 @@ export default class AdminController {
                     targetHandle: req.session.handle || null,
                     operation: Log.DOWNLOAD,
                     extra: {
-                        campaign: req.params.campaign.toLowerCase()
+                        campaign: campaign.toLowerCase()
                     }
                 });
                 if (req.params.type === 'json') {
                     return res.json(docs);
                 } else {
                     var fields = ['name', 'document', 'email'];
-                    if (req.params.campaign.toLowerCase() === 'all') {
+                    if (campaign === 'all') {
                         fields.push('campaign');
                     };
                     json2csv({

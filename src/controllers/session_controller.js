@@ -75,7 +75,7 @@ export default class SessionController {
                             message: 'Houve um problema ao comunicar-se com o Twitter. Tente novamente.'
                         });
                     } else {
-                        req.session.handle = data['screen_name'];
+                        req.session.handle = data['screen_name'].replace(/@/g, '').toLowerCase();
                         SuperUser.isSuperUser(req.session.handle)
                             .then(isSuperUser => {
                                 req.session.isSuperUser = isSuperUser;

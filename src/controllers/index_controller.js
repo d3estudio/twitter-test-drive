@@ -11,7 +11,8 @@ export default class IndexController {
         if (!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
         }
-        req.params.handle = req.params.handle.replace(/@/g, '');
+        req.params.handle = req.params.handle.replace(/@/g, '').toLowerCase();
+        req.params.campaign = req.params.campaign.toLowerCase();
         return Moment.findOne({
                 handle: req.params.handle
             })
@@ -54,7 +55,8 @@ export default class IndexController {
             }
         };
 
-        req.params.handle = req.params.handle.replace(/@/g, '');
+        req.params.handle = req.params.handle.replace(/@/g, '').toLowerCase();
+        req.params.campaign = req.params.campaign.toLowerCase();
 
         var errors = [],
             responseObject = {
