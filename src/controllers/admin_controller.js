@@ -86,7 +86,6 @@ export default class AdminController {
             Inquiry.find({
                 handle: req.params.handle
             }).distinct('campaign').then(result => {
-                console.log(result);
                 result.forEach((campaign, index) => {
                     var content = {
                         campaign: campaign,

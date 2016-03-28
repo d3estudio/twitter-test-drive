@@ -60,7 +60,6 @@ export default class IndexController {
                 campaign: req.params.campaign
             })
             .then((result) => {
-                console.log(result);
                 var url;
                 if (result) {
                     url = result.url;
