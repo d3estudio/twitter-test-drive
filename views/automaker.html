@@ -7,6 +7,9 @@
     <p>Muito obrigado.<br>
     Agora é só esperar a nossa equipe entrar em contato para marcar a melhor data e local.</p>
 </div>
+{% if momentUrl %}
+<a class="twitter-moment" href="{{momentUrl}}"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endif %}
 {% else %}
 <div class="header">
     <img class="logo" src="https://twitter.com/{{handle}}/profile_image?size=original" />
@@ -38,10 +41,6 @@
         <button type="submit">Enviar</button>
     </div>
 </form>
-{% endif %}
-
-{% if momentUrl %}
-<a class="twitter-moment" href="{{momentUrl}}"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endif %}
 
 {% endblock %}

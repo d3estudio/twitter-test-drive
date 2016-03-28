@@ -77,20 +77,50 @@ export default class AdminController {
                 secretKey: SecretKey.findOne({
                     handle: req.params.handle
                 }),
-                campaigns: Inquiry.find({
-                    handle: req.params.handle
-                }).distinct('campaign'),
-                moment: null
+                campaigns: []
             }
         };
 
+
+        new Promise.Promise((resolve, reject) => {
+            Inquiry.find({
+                handle: req.params.handle
+            }).distinct('campaign').then(result => {
+                console.log(result);
+                result.forEach((campaign, index) => {
+                    var content = {
+                        campaign: campaign,
+                        url: null
+                    }
+                    Moment.findOne({
+                        campaign: campaign
+                    }).then(r => {
+                        content.url = r.url;
+                        viewData.targetHandle.campaigns.push(content);
+                        if (index === (result.lrngth - 1)) {
+                            resolve();
+                        }
+                    }).catch((err) => {
+                        viewData.targetHandle.campaigns.push(content);
+                        if (index === (result.lrngth - 1)) {
+                            resolve();
+                        }
+                    })
+                });
+            });
+        }).then(() => {
+            Promise.props(viewData.targetHandle)
+                .then(r => {
+                    viewData.targetHandle = r;
+                    return res.render('admin/detail.html', viewData);
+                })
+                .catch(ex => Utils.recordError(ex));
+        })
+
+
+
         Promise.props(viewData.targetHandle)
             .then(r => {
-                Moment.findOne({
-                    handle: h
-                }).then(r => {
-                    console.log(r);
-                })
                 viewData.targetHandle = r;
                 return res.render('admin/detail.html', viewData);
             })
@@ -321,7 +351,8 @@ export default class AdminController {
             Moment.findOneAndUpdate({
                 campaign: req.body.campaign
             }, {
-                url: req.body.moment
+                url: req.body.moment,
+                handle: req.session.handle
             }, {
                 upsert: true
             }, (err) => {

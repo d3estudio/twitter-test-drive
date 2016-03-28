@@ -13,23 +13,13 @@ export default class IndexController {
         }
         req.params.handle = req.params.handle.replace(/@/g, '').toLowerCase();
         req.params.campaign = req.params.campaign.toLowerCase();
-        return Moment.findOne({
-                handle: req.params.handle
-            })
-            .then((result) => {
-                var url;
-                if (result) {
-                    url = result.url;
-                }
-                return IndexController.nameOf(req.params.handle)
-                    .then((name) => {
-                        return res.render('automaker.html', {
-                            handle: req.params.handle,
-                            campaign: req.params.campaign,
-                            realName: name,
-                            momentUrl: url
-                        });
-                    });
+        return IndexController.nameOf(req.params.handle)
+            .then((name) => {
+                return res.render('automaker.html', {
+                    handle: req.params.handle,
+                    campaign: req.params.campaign,
+                    realName: name
+                });
             })
             .catch(ex => Utils.recordError(ex));
     }
@@ -64,34 +54,48 @@ export default class IndexController {
                 handle: req.params.handle,
                 campaign: req.params.campaign
             };
-        IndexController.nameOf(req.params.handle)
-            .then((name) => {
-                responseObject.realName = name;
-                Object.keys(validators)
-                    .forEach(k => {
-                        responseObject[k] = req.body[k];
-                        if (!validators[k].validator(req.body[k])) {
-                            errors.push(validators[k].message);
+
+        return Moment.findOne({
+                handle: req.params.handle,
+                campaign: req.params.campaign
+            })
+            .then((result) => {
+                console.log(result);
+                var url;
+                if (result) {
+                    url = result.url;
+                }
+                return IndexController.nameOf(req.params.handle)
+                    .then((name) => {
+                        responseObject.realName = name;
+                        Object.keys(validators)
+                            .forEach(k => {
+                                responseObject[k] = req.body[k];
+                                if (!validators[k].validator(req.body[k])) {
+                                    errors.push(validators[k].message);
+                                }
+                            });
+
+                        if (errors.length) {
+                            return res.render('automaker.html', responseObject);
+                        } else {
+                            return Inquiry.create(responseObject)
+                                .then(() => {
+                                    return res.render('automaker.html', {
+                                        success: true,
+                                        handle: req.params.handle,
+                                        momentUrl: url
+                                    });
+                                })
+                                .catch((ex) => {
+                                    Utils.recordError(ex);
+                                    responseObject.errors.push('Ocorreu um erro ao processar a solicitação.');
+                                    return res.render('automaker.html', responseObject);
+                                })
                         }
                     });
-
-                if (errors.length) {
-                    return res.render('automaker.html', responseObject);
-                } else {
-                    return Inquiry.create(responseObject)
-                        .then(() => {
-                            return res.render('automaker.html', {
-                                success: true,
-                                handle: req.params.handle
-                            });
-                        })
-                        .catch((ex) => {
-                            Utils.recordError(ex);
-                            responseObject.errors.push('Ocorreu um erro ao processar a solicitação.');
-                            return res.render('automaker.html', responseObject);
-                        })
-                }
-            });
+            })
+            .catch(ex => Utils.recordError(ex));
     }
 
     static nameOf(handle) {

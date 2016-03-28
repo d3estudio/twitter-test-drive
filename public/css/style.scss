@@ -135,11 +135,12 @@ body {
             }
         }
         .message {
-            position: fixed;
+            position: relative;
             left: 50%;
-            top: 10%;
+            top: 20%;
             width: 200px;
             margin-left: -100px;
+            margin-bottom:30px;
             .icon,
             .reload {
                 margin: 0 0 10px;

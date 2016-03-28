@@ -61,8 +61,8 @@ function saveMoment(element) {
     $.post({
         url: '/admin/users/moment',
         data: {
-            moment: $('.momentURL').val(),
-            handle: $('.momentURL').data('handle')
+            moment: element.val(),
+            campaign: element.data('campaign')
         }
     }).then(function(data) {
         console.log(data);
