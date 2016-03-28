@@ -21,7 +21,9 @@
         <img src="/img/csv.png" />
     </a>
     <span class="campaignName">{{ c }}</span>
-    <!-- <span class="viewTweet"><a href="#">Veja o Tweet</a></span> -->
+    <hr />
+    <img src="/img/edit.png" class="moment" />
+    <input type="text" name="moments" class="momentURL" data-handle="{{card.handle}}" placeholder="Insira aqui o link" value="{{card.moment.url}}" />
 </div>
 {% endfor %}
 {% endblock %}

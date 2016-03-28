@@ -48,9 +48,6 @@ export default class AdminController {
                     otherProms[`${h}_secretKey`] = SecretKey.findOne({
                         handle: h
                     });
-                    otherProms[`${h}_moment`] = Moment.findOne({
-                        handle: h
-                    })
                 })
 
                 Promise.props(otherProms)
@@ -59,7 +56,6 @@ export default class AdminController {
                             var sk = result[`${h}_secretKey`];
                             handles[h].secretKey = sk ? sk.secretKey : null;
                             handles[h].campaigns = result[`${h}_campaigns`];
-                            handles[h].moment = result[`${h}_moment`];
                         });
                         viewData.handles = handles.map(k => handles[k]);
                         return res.render(next, viewData);
@@ -83,12 +79,18 @@ export default class AdminController {
                 }),
                 campaigns: Inquiry.find({
                     handle: req.params.handle
-                }).distinct('campaign')
+                }).distinct('campaign'),
+                moment: null
             }
         };
 
         Promise.props(viewData.targetHandle)
             .then(r => {
+                Moment.findOne({
+                    handle: h
+                }).then(r => {
+                    console.log(r);
+                })
                 viewData.targetHandle = r;
                 return res.render('admin/detail.html', viewData);
             })
@@ -310,14 +312,14 @@ export default class AdminController {
         if (!req.session.handle) {
             return res.redirect('/session');
         }
-        if (!req.body.moment && !req.body.handle) {
+        if (!req.body.moment && !req.body.campaign) {
             res.json({
                 success: false,
                 error: 'Missing moment or handle'
             });
         } else {
             Moment.findOneAndUpdate({
-                handle: req.body.handle
+                campaign: req.body.campaign
             }, {
                 url: req.body.moment
             }, {
