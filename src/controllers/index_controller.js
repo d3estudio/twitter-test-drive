@@ -27,10 +27,6 @@ export default class IndexController {
     static create(req, res) {
         var validators = {
             // we do not need this anymore
-            // userHandle: {
-            //     validator: (handle) => /^@?(\w){1,15}$/.test(handle),
-            //     message: 'Insira um nome de usuário válido'
-            // },
             name: {
                 validator: (name) => /(\w)\s(\w+)/.test(name),
                 message: 'Insira seu nome completo'
@@ -42,6 +38,10 @@ export default class IndexController {
             email: {
                 validator: (email) => Utils.validateEmail(email),
                 message: 'Insira um email válido'
+            },
+            location: {
+                validator: (location) => /.+/.test(location),
+                message: 'Insira sua localizaçãao'
             }
         };
 

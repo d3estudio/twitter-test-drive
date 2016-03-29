@@ -181,7 +181,7 @@ export default class AdminController {
                 if (req.params.type === 'json') {
                     return res.json(docs);
                 } else {
-                    var fields = ['name', 'document', 'email'];
+                    var fields = ['name', 'document', 'email', 'location'];
                     if (campaign === 'all') {
                         fields.push('campaign');
                     };

@@ -96,6 +96,10 @@ body {
                 color: #1DA1F1;
                 border-bottom: 1px solid #ccd6dd;
             }
+            input.location{
+                background: url(../img/pin.png) left center no-repeat;
+                padding-left: 20px;
+            }
             .field {
                 display: inline-block;
                 position: relative;
