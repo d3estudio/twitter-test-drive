@@ -79,9 +79,7 @@ export default class SessionController {
                         SuperUser.isSuperUser(req.session.handle)
                             .then(isSuperUser => {
                                 req.session.isSuperUser = isSuperUser;
-                                if(!isSuperUser) {
-                                    return SecretKey.getOrCreateForHandle(req.session.handle);
-                                }
+                                return SecretKey.getOrCreateForHandle(req.session.handle);
                             })
                             .then((key) => {
                                 if(key) {
