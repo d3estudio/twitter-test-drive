@@ -14,8 +14,9 @@
         </a>
         <span class="menu">
             <ul class="submenu">
-                <li><a href="/admin/">Home</a></li>
-                <li><a href="/admin/users/">Administradores</a></li>
+                {% if isSuperUser %}
+                    <li><a href="/admin/users/">Administradores</a></li>
+                {% endif %}
                 <li><a href="/logout/">Sair</a></li>
             </ul>
         </a>
