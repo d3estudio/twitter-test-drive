@@ -15,12 +15,12 @@ momentSchema.statics.momentForCampaign = function(campaign, handle) {
                 return result;
             }
         })
-        .then((r) => r ? r.url : null);
+        .then(r => r ? r.url : '');
 }
 
 momentSchema.statics.defaultMomentForHandle = function(handle) {
     return this.findOne({ handle, campaign: null })
-        .then((r) => r ? r.url : null);
+        .then(r => r ? r.url : '');
 }
 
 export default mongoose.model('Moment', momentSchema);
