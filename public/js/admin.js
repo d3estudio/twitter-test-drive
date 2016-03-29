@@ -61,7 +61,7 @@ function saveMoment(element) {
     $.post({
         url: '/admin/users/moment',
         data: {
-            moment: element.val(),
+            url: element.val(),
             campaign: element.data('campaign')
         }
     }).then(function(data) {
@@ -86,4 +86,12 @@ $('.moment').click(function() {
 
 $('.momentURL').keydown(function() {
     $(this).parent().find('.moment').addClass('editing').attr('src', '/img/save.png');
+});
+
+$('.logout').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $.post('/logout')
+        .then(function() { window.location.href = 'https://twitter.com'; })
+        .catch(function() { window.location.href = 'https://twitter.com'; });
 });
