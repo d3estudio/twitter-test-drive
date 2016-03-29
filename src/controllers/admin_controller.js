@@ -126,7 +126,7 @@ export default class AdminController {
             return res.status(400).send('Invalid type. Please specify either json or csv.');
         }
 
-        var campaign = req.params.compaign.toLowerCase(),
+        var campaign = req.params.campaign.toLowerCase(),
             filter = {
                 handle: req.session.handle,
                 campaign: campaign
@@ -175,7 +175,7 @@ export default class AdminController {
                     targetHandle: req.session.handle || null,
                     operation: Log.DOWNLOAD,
                     extra: {
-                        campaign: campaign.toLowerCase()
+                        campaign
                     }
                 });
                 if (req.params.type === 'json') {
