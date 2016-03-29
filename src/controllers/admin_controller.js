@@ -30,11 +30,13 @@ export default class AdminController {
         }
 
         var handles = {},
-            otherProms = {};
+            otherProms = {},
+            momentProms = {};
 
         Inquiry.find(filter)
             .distinct('handle')
-            .then((handles) => {
+            .then((result) => {
+                handles = result;
                 handles.forEach(h => {
                     handles[h] = {
                         handle: h,
@@ -48,20 +50,32 @@ export default class AdminController {
                     otherProms[`${h}_secretKey`] = SecretKey.findOne({
                         handle: h
                     });
-                })
+                    otherProms[`${h}_defaultMoment`] = Moment.defaultMomentForHandle(h);
+                });
 
-                Promise.props(otherProms)
-                    .then(result => {
-                        handles.forEach(h => {
-                            var sk = result[`${h}_secretKey`];
-                            handles[h].secretKey = sk ? sk.secretKey : null;
-                            handles[h].campaigns = result[`${h}_campaigns`];
-                        });
-                        viewData.handles = handles.map(k => handles[k]);
-                        return res.render(next, viewData);
-                    })
-                    .catch(ex => Utils.recordError(ex));
-            });
+                return Promise.props(otherProms);
+            })
+            .then(result => {
+                handles.forEach(h => {
+                    var sk = result[`${h}_secretKey`];
+                    handles[h].secretKey = sk ? sk.secretKey : null;
+                    handles[h].campaigns = result[`${h}_campaigns`];
+                    handles[h].moments = {};
+                    handles[h].campaigns.forEach(c => {
+                        momentProms[`${h}_${c}`] = Moment.momentForCampaign(c, h);
+                    });
+                    handles[h].defaultMoment = result[`${h}_defaultMoment`];
+                });
+                return Promise.props(momentProms);
+            })
+            .then(moments => {
+                handles.forEach(h => {
+                    handles[h].campaigns.forEach(c => handles[h].moments[c] = moments[`${h}_${c}`]);
+                });
+                viewData.handles = handles.map(k => handles[k]);
+                return res.render(next, viewData);
+            })
+            .catch(ex => Utils.recordError(ex));
     }
 
     static detail(req, res) {
@@ -77,51 +91,28 @@ export default class AdminController {
                 secretKey: SecretKey.findOne({
                     handle: req.params.handle
                 }),
-                campaigns: []
+                campaigns: [],
+                moments: {}
             }
         };
 
+        var proms = {
+            secretKey: SecretKey.findOne({ handle: req.params.handle }),
+        };
 
-        new Promise.Promise((resolve, reject) => {
-            Inquiry.find({
+        Inquiry.find({
                 handle: req.params.handle
-            }).distinct('campaign').then(result => {
-                result.forEach((campaign, index) => {
-                    var content = {
-                        campaign: campaign,
-                        url: null
-                    }
-                    Moment.findOne({
-                        campaign: campaign
-                    }).then(r => {
-                        content.url = r.url;
-                        viewData.targetHandle.campaigns.push(content);
-                        if (index === (result.lrngth - 1)) {
-                            resolve();
-                        }
-                    }).catch((err) => {
-                        viewData.targetHandle.campaigns.push(content);
-                        if (index === (result.lrngth - 1)) {
-                            resolve();
-                        }
-                    })
-                });
-            });
-        }).then(() => {
-            Promise.props(viewData.targetHandle)
-                .then(r => {
-                    viewData.targetHandle = r;
-                    return res.render('admin/detail.html', viewData);
-                })
-                .catch(ex => Utils.recordError(ex));
-        })
-
-
-
-        Promise.props(viewData.targetHandle)
+            })
+            .distinct('campaign')
+            .then(result => {
+                viewData.targetHandle.campaigns = result;
+                result.forEach(campaign => proms[`c_${campaign}`] = Moment.momentForCampaign(campaign, req.params.handle));
+                return Promise.props(proms);
+            })
             .then(r => {
-                viewData.targetHandle = r;
-                return res.render('admin/detail.html', viewData);
+                viewData.targetHandle.secretKey = r.secretKey;
+                viewData.targetHandle.campaigns.forEach(c => viewData.targetHandle.moments[c] = r[`c_${c}`]);
+                res.render('admin/detail.html', viewData);
             })
             .catch(ex => Utils.recordError(ex));
     }
@@ -341,31 +332,30 @@ export default class AdminController {
         if (!req.session.handle) {
             return res.redirect('/session');
         }
-        if (!req.body.moment && !req.body.campaign) {
-            res.json({
+
+        if(!req.body.url) {
+            return res.json({
                 success: false,
-                error: 'Missing moment or handle'
-            });
-        } else {
-            Moment.findOneAndUpdate({
-                campaign: req.body.campaign
-            }, {
-                url: req.body.moment,
-                handle: req.session.handle
-            }, {
-                upsert: true
-            }, (err) => {
-                if (err) {
-                    return res.json({
-                        success: false,
-                        error: err
-                    });
-                } else {
-                    return res.json({
-                        success: true
-                    });
-                }
-            });
+                error: 'Missing moment URL'
+            })
         }
+
+        var query = {
+            campaign: req.body.campaign || null,
+            handle: req.session.handle
+        };
+
+        if(req.session.isSuperUser && req.body.handle) {
+            query.handle = req.body.handle;
+        }
+
+        Moment.findOneAndUpdate(query, { url: req.body.url }, { upsert: true })
+            .then(r => {
+                return res.json({ success: true })
+            })
+            .catch(ex => {
+                Utils.recordError(ex);
+                return res.json({ success: false, error: ex });
+            });
     }
 }

@@ -20,11 +20,11 @@
     <a href="/admin/download/{{ targetHandle.handle }}/{{ c }}/csv" target="_blank">
         <img src="/img/csv.png" />
     </a>
-    <span class="campaignName">{{ c.campaign }}</span>
+    <span class="campaignName">{{ c }}</span>
     <div class="clear"></div>
     <hr />
     <img src="/img/edit.png" class="moment" />
-    <input type="text" name="moments" class="momentURL" data-campaign="{{c.campaign}}" placeholder="Insira aqui o link" value="{{c.url}}" />
+    <input type="text" name="moments" class="momentURL" data-campaign="{{ c }}" placeholder="Insira aqui o link" value="{{ targetHandle.moments[c] }}" />
 </div>
 {% endfor %}
 {% endblock %}

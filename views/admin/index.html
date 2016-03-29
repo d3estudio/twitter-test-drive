@@ -13,6 +13,10 @@
         <span class="handle">@{{card.handle}}</span>
         <span class="key">{{card.secretKey}}</span>
     </a>
+    <div class="clear"></div>
+    <hr />
+    <img src="/img/edit.png" class="moment" />
+    <input type="text" name="moments" class="momentURL" data-campaign="" placeholder="Insira aqui o link" value="{{card.defaultMoment}}" />
 </div>
 {% endfor %}
 {% endblock %}
