@@ -181,7 +181,7 @@ export default class AdminController {
                 if (req.params.type === 'json') {
                     return res.json(docs);
                 } else {
-                    var fields = ['name', 'document', 'email', 'location'];
+                    var fields = ['name', 'document', 'email', 'location', 'zip', 'phone'];
                     if (campaign === 'all') {
                         fields.push('campaign');
                     };
@@ -350,6 +350,26 @@ export default class AdminController {
         }
 
         Moment.findOneAndUpdate(query, { url: req.body.url }, { upsert: true })
+            .then(r => {
+                return res.json({ success: true })
+            })
+            .catch(ex => {
+                Utils.recordError(ex);
+                return res.json({ success: false, error: ex });
+            });
+    }
+
+    static extraFields(req, res) {
+        var query = {
+            campaign: req.body.campaign || null,
+            handle: req.session.handle
+        };
+
+        if(req.session.isSuperUser && req.body.handle) {
+            query.handle = req.body.handle;
+        }
+
+        Moment.findOneAndUpdate(query, { extra_fields: req.body.extra_fields }, { upsert: true })
             .then(r => {
                 return res.json({ success: true })
             })

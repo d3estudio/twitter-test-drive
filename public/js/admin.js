@@ -95,3 +95,20 @@ $('.logout').click(function(e) {
         .then(function() { window.location.href = 'https://twitter.com'; })
         .catch(function() { window.location.href = 'https://twitter.com'; });
 });
+
+$('.extra_fields').change(function() {
+    var val = $(this).prop('checked');
+    var campaign = $(this).data('campaign');
+    $.post({
+        url: '/admin/campaign/extra',
+        data: {
+            extra_fields: val,
+            campaign: campaign
+        }
+    }).then(function(data) {
+        console.log(data);
+        if (data.success) {
+
+        }
+    });
+});

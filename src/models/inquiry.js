@@ -6,6 +6,8 @@ const inquirySchema = mongoose.Schema({
     document:   { type: String, required: true },
     email:      { type: String, required: true },
     campaign:   { type: String, required: true },
+    zip:        { type: String, required: false },
+    phone:      { type: String, required: false },
     location:   { type: String, required: true }
 });
 

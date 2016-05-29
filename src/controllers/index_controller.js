@@ -15,11 +15,21 @@ export default class IndexController {
         req.params.campaign = req.params.campaign.toLowerCase();
         return IndexController.nameOf(req.params.handle)
             .then((name) => {
-                return res.render('automaker.html', {
+                return {
                     handle: req.params.handle,
                     campaign: req.params.campaign,
                     realName: name
-                });
+                }
+            })
+            .then((context) => {
+                return Moment.findOne({
+                        handle: req.params.handle,
+                        campaign: req.params.campaign
+                    })
+                    .then((result) => {
+                        context['extra_fields'] = result.extra_fields;
+                        return res.render('automaker.html', context);
+                    });
             })
             .catch(ex => Utils.recordError(ex));
     }
@@ -38,6 +48,14 @@ export default class IndexController {
             email: {
                 validator: (email) => Utils.validateEmail(email),
                 message: 'Insira um email válido'
+            },
+            zip: {
+                validator: (zip) => /.*/.test(zip),
+                message: "Insira seu CEP"
+            },
+            phone: {
+                validator: (phone) => /.*/.test(phone),
+                message: "Insira seu Telefone"
             },
             location: {
                 validator: (location) => /.+/.test(location),
