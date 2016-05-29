@@ -23,7 +23,7 @@
     <span class="campaignName">{{ c }}</span>
     <div class="clear"></div>
     <hr />
-    <input data-handle="{{ targetHandle.handle }}" data-campaign="{{ c }}" type="checkbox" name="extra_fields" class="extra_fields" value="1" {% if targetHandle.moments[c].extra_fields %}checked{% endif %} /> <label for="extra_fields">Exibir CEP e Telefone</label>
+    <input data-handle="{{ targetHandle.handle }}" data-campaign="{{ c }}" type="checkbox" name="extra_fields" class="extra_fields" value="1" {% if targetHandle.moments[c].extra_fields == "true" %}checked{% endif %} /> <label for="extra_fields">Exibir CEP e Telefone</label>
     <div class="clear"></div>
     <hr />
     <img src="/img/edit.png" class="moment" />

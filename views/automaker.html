@@ -34,7 +34,7 @@
     <div class="field">
         <input id="document" name="document" type="number" inputmode="numeric" pattern="\d*"  value="{{ document }}" tabindex="3" placeholder="CPF">
     </div>
-    {% if extra_fields %}
+    {% if extra_fields == "true" %}
     <div class="field">
         <input id="zip" name="zip" type="number" inputmode="numeric" pattern="\d*"  value="{{ zip }}" tabindex="3" placeholder="CEP">
     </div>

@@ -27,7 +27,9 @@ export default class IndexController {
                         campaign: req.params.campaign
                     })
                     .then((result) => {
-                        context['extra_fields'] = result.extra_fields;
+                        if (result) {
+                            context['extra_fields'] = result.extra_fields;
+                        }
                         return res.render('automaker.html', context);
                     });
             })
