@@ -1,0 +1,12 @@
+FROM ubuntu:14.04
+
+RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq curl git ssh sshpass
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+RUN apt-get -q -y install nodejs build-essential
+
+COPY . /app
+RUN cd /app; npm install --global babel-cli
+RUN cd /app; npm install
+
+EXPOSE 3000
+CMD [ "babel-node", "/app/src/index.js" ]
