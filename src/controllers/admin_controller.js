@@ -361,15 +361,10 @@ export default class AdminController {
 
     static extraFields(req, res) {
         var query = {
-            campaign: req.body.campaign || null,
-            handle: req.session.handle
+            campaign: req.body.campaign || null
         };
 
-        if(req.session.isSuperUser && req.body.handle) {
-            query.handle = req.body.handle;
-        }
-
-        Moment.findOneAndUpdate(query, { extra_fields: req.body.extra_fields }, { upsert: true })
+        Moment.update(query, { extra_fields: req.body.extra_fields }, { upsert: true })
             .then(r => {
                 return res.json({ success: true })
             })
