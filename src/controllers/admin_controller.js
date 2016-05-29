@@ -361,10 +361,11 @@ export default class AdminController {
 
     static extraFields(req, res) {
         var query = {
-            campaign: req.body.campaign || null
+            campaign: req.body.campaign || null,
+            handle: req.body.handle
         };
 
-        Moment.update(query, { extra_fields: req.body.extra_fields }, { upsert: true })
+        Moment.findOneAndUpdate(query, { extra_fields: req.body.extra_fields }, { upsert: true })
             .then(r => {
                 return res.json({ success: true })
             })

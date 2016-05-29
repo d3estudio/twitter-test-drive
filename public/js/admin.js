@@ -99,10 +99,12 @@ $('.logout').click(function(e) {
 $('.extra_fields').change(function() {
     var val = $(this).prop('checked');
     var campaign = $(this).data('campaign');
+    var handle = $(this).data('handle');
     $.post({
         url: '/admin/campaign/extra',
         data: {
             extra_fields: val,
+            handle: handle,
             campaign: campaign
         }
     }).then(function(data) {
