@@ -3,20 +3,19 @@
 <h1>Olá, @{{ handle }}</h1>
 {% for card in handles %}
 <div class="card">
-    <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
-        <img src="/img/json.png" />
-    </a>
-    <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
-        <img src="/img/csv.png" />
-    </a>
-    <a class="detail" href="/admin/detail/{{card.handle}}">
-        <span class="handle">@{{card.handle}}</span>
-        <span class="key">{{card.secretKey}}</span>
-    </a>
-    <div class="clear"></div>
-    <hr />
-    <img src="/img/edit.png" class="moment" />
-    <input type="text" name="moments" class="momentURL" data-campaign="" placeholder="Insira aqui o link" value="{{card.defaultMoment.url}}" />
+    <div class="campaignData">
+        <a class="detail" href="/admin/detail/{{card.handle}}">
+            <span class="campaignName">@{{card.handle}}</span>
+        </a>
+    </div>
+    <div class="links">
+        <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
+            Visualizar CSV
+        </a>
+        <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
+            Visualizar JSON
+        </a>
+    </div>
 </div>
 {% endfor %}
 {% endblock %}

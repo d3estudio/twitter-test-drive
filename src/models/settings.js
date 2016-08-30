@@ -11,7 +11,7 @@ export default class Settings {
     static load() {
         var defaultSettings = {
             port: 3000,
-            databaseUri: 'mongodb://localhost/twitter-tdd',
+            databaseUri: 'mongodb://db/twitter-tdd',
             twitterConsumerKey: null,
             twitterConsumerSecret: null,
             twitterCallbackUri: null,
