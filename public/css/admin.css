@@ -86,6 +86,7 @@ body .content h1 {
     margin: 0 1.5% 20px;
     font-weight: lighter;
     text-align: right;
+    max-width: 96%;
 }
 
 body .content .card {
