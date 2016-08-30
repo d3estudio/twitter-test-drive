@@ -85,7 +85,7 @@ body .content h1 {
     font-size: 18px;
     margin: 0 1.5% 20px;
     font-weight: lighter;
-    float: right;
+    text-align: right;
 }
 
 body .content .card {
