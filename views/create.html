@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if success %}
+<div class="message">
+    <img class="icon" src="/img/sent.png" />
+    <h1></h1>
+    <p></p>
+</div>
+{% else %}
+<form class="validate" action="/{{handle}}/{{campaign}}" method="POST">
+    {% if errors %}
+    <ul class="errors">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="formSize campaignHeader">
+        <img class="logo" src="/img/twitter.png" />
+        <div class="field">
+            <h2>handleTwitter{{ handleName }}</h2>
+        </div>
+        <div class="field">
+            <input id="campaignName" name="campaignName" type="text" value="{{ campaignName }}" tabindex="2" placeholder="Digite o nome da campanha">
+        </div>
+        <div class="field">
+            <input id="campaignDescription" name="campaignDescription" type="text" value="{{ campaignDescription }}" tabindex="3" placeholder="Digite a descrição da campanha">
+        </div>
+    </div>
+
+    <div class="customFields">
+        <div class="field">
+            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
+            <a href="#" class="close">&#215</a>
+        </div>
+        <div class="field">
+            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
+            <a href="#" class="close">&#215</a>
+        </div>
+    </div>
+
+    <div class="newField">
+        <div class="field">
+            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
+            <select>
+                <option disabled selected>Type</option>
+                <option>Email</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="addField field">
+        <button>Adicionar campo</button>
+    </div>
+
+    <div class="field">
+        <input id="momentsLink" name="momentsLink" type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Link do Moments">
+    </div>
+    <div class="field">
+        <textarea id="successMessage" name="successMessage" value="{{ successMessage }}" tabindex="5" placeholder="Mensagem de confirmação"></textarea>
+    </div>
+
+    <div class="field buttons">
+        <button>Visualizar formulário</button>
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAL-iG-U-XFdlsekihk4QZK1WBy8YxNgAI"></script>
+<script type="text/javascript" src="/js/map.min.js"></script>
+{% endif %}
+
+{% endblock %}
