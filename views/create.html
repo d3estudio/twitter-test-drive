@@ -30,12 +30,8 @@
     </div>
 
     <div class="customFields">
-        <div class="field">
-            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
-            <a href="#" class="close">&#215</a>
-        </div>
-        <div class="field">
-            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
+        <div class="field toClone">
+            <input type="text" value="" placeholder="">
             <a href="#" class="close">&#215</a>
         </div>
     </div>
@@ -45,7 +41,8 @@
             <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
             <select>
                 <option disabled selected>Type</option>
-                <option>Email</option>
+                <option value="text">Text</option>
+                <option value="email">Email</option>
             </select>
         </div>
     </div>
@@ -68,6 +65,7 @@
 </form>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAL-iG-U-XFdlsekihk4QZK1WBy8YxNgAI"></script>
 <script type="text/javascript" src="/js/map.min.js"></script>
+<script type="text/javascript" src="/js/create.js"></script>
 {% endif %}
 
 {% endblock %}

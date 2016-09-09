@@ -274,6 +274,10 @@ body .content form .customFields .close {
     margin-top: 4px;
 }
 
+body .content form .customFields .toClone {
+    display: none;
+}
+
 body .content form .field.addField {
     text-align: right;
     margin-bottom: 31px;
