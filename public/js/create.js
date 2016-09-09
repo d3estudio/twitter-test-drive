@@ -9,6 +9,8 @@ $('.addField button').click(function() {
 
     $('.customFields').append(html);
 
+    $('.newField input').val('');
+    $('.newField select').val('Type');
 })
 
 $('body').on('click', '.close', function(e) {
