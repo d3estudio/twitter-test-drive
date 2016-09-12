@@ -281,15 +281,23 @@ body .content form .customFields .toClone {
 body .content form .field.addField {
     text-align: right;
     margin-bottom: 31px;
+    height: 32px;
 }
 
-body .content form .field.addField button {
-    float: none;
+body .content form .field.addField a {
+    float: right;
     width: auto;
-    padding: 5px 15px 8px;
+    padding: 5px 15px 8px 10px;
+    background: #dbe0e4;
+    border-radius: 5px;
+    color: #55595c;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-body .content form .field.addField button:before {
+body .content form .field.addField a:before {
     content: "+";
     background: none;
     width: auto;
