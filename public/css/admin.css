@@ -1,333 +1,190 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    font-family: Helvetica;
-    color: #001d33;
-    list-style: none;
-    list-style-type: none
-}
-
-.clear {
-    clear: both
-}
-
-body {
-    background: #f9f9f9
-}
-
-body .header {
-    background: #55acee;
-    padding: 12px 40px
-}
-
-body .header img {
-    margin-right: 12px;
-    height: 20px
-}
-
-body .header span {
-    color: #ffffff;
-    font-size: 18px
-}
-
-body .header span.menu {
-    float: right;
-    display: block;
-    padding: 25px;
-    margin-top: -12px;
-    background: url("../img/settings.png") center center no-repeat;
-    cursor: pointer;
-    position: relative
-}
-
-body .header span.menu ul.submenu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 0;
-    overflow: hidden;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 10px 0;
-    background: #ffffff;
-    box-shadow: 1px 1px #d9d9d9, 2px 2px #d9d9d9, 3px 3px #d9d9d9
-}
-
-body .header span.menu ul.submenu li a {
-    display: block;
-    color: #55acee;
-    padding: 13px 10px 10px 0;
-    width: 150px;
-    text-align: right;
-    text-decoration: none;
-    font-size: 18px
-}
-
-body .header span.menu:hover {
-    background: url("../img/settingsHover.png") center center no-repeat #fff
-}
-
-body .header span.menu:hover ul.submenu {
-    display: block
-}
-
-body .content {
-    padding: 35px 40px;
-    max-width: 810px;
-    margin: 0 auto;
-}
-
-body .content h1 {
-    color: #a8aaad;
-    font-size: 18px;
-    margin: 0 1.5% 20px;
-    font-weight: lighter;
-    text-align: right;
-    max-width: 96%;
-}
-
-body .content .card {
-    float: left;
-    margin: 7px 1.5%;
-    background: #ffffff;
-    border-radius: 5px;
-    width: 46.5%;
-}
-
-body .content .card span.handle {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block
-}
-
-body .content .card span.key {
-    font-size: 11.25px;
-    padding: 0;
-    color: #AEAEAE;
-    font-family: monospace;
-    background: url("../img/key.png") left top no-repeat;
-    background-size: 10px;
-    padding-left: 14px
-}
-
-body .content .card .campaignData {
-    padding: 18px 22px;
-    float: left;
-}
-
-body .content .card .campaignData {
-    padding: 18px 22px;
-    float: left;
-    width: 100%;
-}
-
-body .content .card span.campaignName {
-    font-size: 19px;
-    font-weight: bold;
-    display: block;
-    margin: 0
-}
-
-body .content .card span.viewTweet {
-    float: left
-}
-
-body .content .card span.viewTweet a {
-    font-size: 19px;
-    display: inline;
-    margin: 0;
-    color: #55acee;
-    text-decoration: none;
-    font-size: 19px;
-    margin-top: 4px
-}
-
-body .content .card:not(.selected) .links {
-    width: 100%;
-    float: left;
-    border-top: 1px solid #f9f9f9;
-}
-
-body .content .card:not(.selected) .links a {
-    float: left;
-    color: #a8aaad;
-    font-family: Helvetica;
-    font-size: 14px;
-    text-decoration: none;
-    margin: 0;
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-}
-
-body .content .card:not(.selected) .links a:first-child {
-    border-right: 1px solid #f9f9f9;
-}
-
-body .content .card .links a:before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    display: inline-block;
-    background: url('../img/link_icon.png') no-repeat;
-    margin-right: 4px;
-    margin-bottom: -1px;
-}
-
-body .content .card .linkURL {
-    margin-top: 6px;
-    float: left;
-    font-size: 14px;
-    color: #a8aaad;
-}
-
-body .content .card a img {
-    height: 36px
-}
-
-body .content .card a.detail {
-    float: none;
-    text-decoration: none;
-    margin: 0
-}
-
-body .content .card hr {
-    border: 1px solid #dddddd;
-    clear: both;
-    margin: 10px 0
-}
-
-body .content .card img.moment {
-    float: right;
-    cursor: pointer;
-    margin-top: 4px
-}
-
-body .content .card label {
-    font-size: 14px;
-    color: #AEAEAE;
-}
-
-body .content .card input[type=text] {
-    padding: 5px 5px 5px 20px;
-    width: 90%;
-    float: left;
-    font-size: 16px;
-    color: #AEAEAE;
-    background: url("../img/moments.png") left center no-repeat
-}
-
-body .content .card.selected {
-    width: 96% !important;
-    max-width: 96% !important;
-    background: transparent;
-    padding: 0;
-    border: 1px solid #e1e8ed;
-}
-
-body .content .card.selected .links {
-    float: right;
-    padding: 9px 35px;
-    border-left: 1px solid #e1e8ed;
-    width: auto;
-    height: 100%;
-}
-
-body .content .card.selected .links a {
-    display: block;
-    float: none;
-    color: #a8aaad;
-    font-family: Helvetica;
-    font-size: 14px;
-    text-decoration: none;
-    padding: 9px 0;
-    margin: 0;
-}
-
-body .content .card.selected .links a:before {
-    content: '';
-    width: 14px;
-    height: 14px;
-    display: inline-block;
-    background: url('../img/link_icon.png') no-repeat;
-}
-
-body .content .card.selected .logo {
-    width: 70px;
-    margin: 8px 20px 8px 10px;
-    border-radius: 5px;
-    float: left
-}
-
-body .content .card.selected span.handle {
-    margin-top: 34px
-}
-
-body .content .card.selected span.key {
-    background-size: auto;
-    font-size: 16px;
-    padding-left: 20px
-}
-
-body .content .card.selected a img {
-    height: 48px
-}
-
-body .content .card.admin {
-    padding: 35px 40px
-}
-
-body .content .card.admin .username {
-    font-size: 19px;
-    color: #aeaeae
-}
-
-body .content .card.admin .username strong {
-    color: #55acee
-}
-
-body .content .card.admin .save, body .content .card.admin .remove {
-    float: right;
-    cursor: pointer;
-    margin-top: 3px
-}
-
-body .content .card.admin hr {
-    margin: 20px 0
-}
-
-body .content .card.admin strong {
-    float: left;
-    display: block;
-    padding: 5px 0
-}
-
-body .content .card.admin input {
-    background: none;
-    width: 85%;
-    float: left;
-    padding-left: 0
-}
-
-@media only screen and (max-width: 780px) {
-    .card {
-        width: 96% !important
+    * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        font-family: Helvetica;
+        color: #001d33;
+        list-style: none;
+        list-style-type: none
     }
-}
 
-@media only screen and (max-width: 600px) {
-    body .content .card.selected .links {
+    .clear {
+        clear: both
+    }
+
+    body {
+        background: #f9f9f9
+    }
+
+    body .header {
+        background: #55acee;
+        padding: 12px 40px
+    }
+
+    body .header img {
+        margin-right: 12px;
+        height: 20px
+    }
+
+    body .header span {
+        color: #ffffff;
+        font-size: 18px
+    }
+
+    body .header span.menu {
+        float: right;
+        display: block;
+        padding: 25px;
+        margin-top: -12px;
+        background: url("../img/settings.png") center center no-repeat;
+        cursor: pointer;
+        position: relative
+    }
+
+    body .header span.menu ul.submenu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        overflow: hidden;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        padding: 10px 0;
+        background: #ffffff;
+        box-shadow: 1px 1px #d9d9d9, 2px 2px #d9d9d9, 3px 3px #d9d9d9
+    }
+
+    body .header span.menu ul.submenu li a {
+        display: block;
+        color: #55acee;
+        padding: 13px 10px 10px 0;
+        width: 150px;
+        text-align: right;
+        text-decoration: none;
+        font-size: 18px
+    }
+
+    body .header span.menu:hover {
+        background: url("../img/settingsHover.png") center center no-repeat #fff
+    }
+
+    body .header span.menu:hover ul.submenu {
+        display: block
+    }
+
+    body .content {
+        padding: 35px 40px;
+        max-width: 810px;
+        margin: 0 auto;
+    }
+
+    body .content .newCampaign {
+        width: 97%;
+        border-top: 1px solid #e1e8ed;
+        float: left;
+        clear: both;
+        margin: 40px 1.5%;
+        padding: 35px 0;
+        text-align: center;
+    }
+
+    body .content .newCampaign button {
+        background: #1DA1F1;
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: 14px;
+        padding: 10px 15px;
+        width: 200px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    body .content .newCampaign button:before {
+        content: "+";
+        background: none;
+        width: auto;
+        height: auto;
+        display: inline-block;
+        font-size: 20px;
+        margin-right: 5px;
+        font-weight: normal;
+    }
+
+    body .content h1 {
+        color: #a8aaad;
+        font-size: 18px;
+        margin: 0 1.5% 20px;
+        font-weight: lighter;
+        text-align: right;
+        max-width: 96%;
+    }
+
+    body .content .card {
+        float: left;
+        margin: 7px 1.5%;
+        background: #ffffff;
+        border-radius: 5px;
+        width: 46.5%;
+    }
+
+    body .content .card span.handle {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block
+    }
+
+    body .content .card span.key {
+        font-size: 11.25px;
+        padding: 0;
+        color: #AEAEAE;
+        font-family: monospace;
+        background: url("../img/key.png") left top no-repeat;
+        background-size: 10px;
+        padding-left: 14px
+    }
+
+    body .content .card .campaignData {
+        padding: 18px 22px;
+        float: left;
+    }
+
+    body .content .card .campaignData {
+        padding: 18px 22px;
+        float: left;
+        width: 100%;
+    }
+
+    body .content .card span.campaignName {
+        font-size: 19px;
+        font-weight: bold;
+        display: block;
+        margin: 0
+    }
+
+    body .content .card span.viewTweet {
+        float: left
+    }
+
+    body .content .card span.viewTweet a {
+        font-size: 19px;
+        display: inline;
+        margin: 0;
+        color: #55acee;
+        text-decoration: none;
+        font-size: 19px;
+        margin-top: 4px
+    }
+
+    body .content .card:not(.selected) .links {
         width: 100%;
         float: left;
-        border-top: 1px solid #e1e8ed;
-        border-left: none;
-        padding: 0;
+        border-top: 1px solid #f9f9f9;
     }
-    body .content .card.selected .links a {
+
+    body .content .card:not(.selected) .links a {
         float: left;
         color: #a8aaad;
         font-family: Helvetica;
@@ -338,7 +195,188 @@ body .content .card.admin input {
         padding: 10px;
         text-align: center;
     }
-    body .content .card.selected .links a:first-child {
-        border-right: 1px solid #e1e8ed;
+
+    body .content .card:not(.selected) .links a:first-child {
+        border-right: 1px solid #f9f9f9;
     }
-}
+
+    body .content .card .links a:before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        background: url('../img/link_icon.png') no-repeat;
+        margin-right: 4px;
+        margin-bottom: -1px;
+    }
+
+    body .content .card .linkURL {
+        margin-top: 6px;
+        float: left;
+        font-size: 14px;
+        color: #a8aaad;
+    }
+
+    body .content .card a img {
+        height: 36px
+    }
+
+    body .content .card a.detail {
+        float: none;
+        text-decoration: none;
+        margin: 0
+    }
+
+    body .content .card hr {
+        border: 1px solid #dddddd;
+        clear: both;
+        margin: 10px 0
+    }
+
+    body .content .card img.moment {
+        float: right;
+        cursor: pointer;
+        margin-top: 4px
+    }
+
+    body .content .card label {
+        font-size: 14px;
+        color: #AEAEAE;
+    }
+
+    body .content .card input[type=text] {
+        padding: 5px 5px 5px 20px;
+        width: 90%;
+        float: left;
+        font-size: 16px;
+        color: #AEAEAE;
+        background: url("../img/moments.png") left center no-repeat
+    }
+
+    body .content .card.selected {
+        width: 96% !important;
+        max-width: 96% !important;
+        background: transparent;
+        padding: 0;
+        border: 1px solid #e1e8ed;
+    }
+
+    body .content .card.selected .links {
+        float: right;
+        padding: 9px 35px;
+        border-left: 1px solid #e1e8ed;
+        width: auto;
+        height: 100%;
+    }
+
+    body .content .card.selected .links a {
+        display: block;
+        float: none;
+        color: #a8aaad;
+        font-family: Helvetica;
+        font-size: 14px;
+        text-decoration: none;
+        padding: 9px 0;
+        margin: 0;
+    }
+
+    body .content .card.selected .links a:before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        background: url('../img/link_icon.png') no-repeat;
+    }
+
+    body .content .card.selected .logo {
+        width: 70px;
+        margin: 8px 20px 8px 10px;
+        border-radius: 5px;
+        float: left
+    }
+
+    body .content .card.selected span.handle {
+        margin-top: 34px
+    }
+
+    body .content .card.selected span.key {
+        background-size: auto;
+        font-size: 16px;
+        padding-left: 20px
+    }
+
+    body .content .card.selected a img {
+        height: 48px
+    }
+
+    body .content .card.admin {
+        padding: 35px 40px
+    }
+
+    body .content .card.admin .username {
+        font-size: 19px;
+        color: #aeaeae
+    }
+
+    body .content .card.admin .username strong {
+        color: #55acee
+    }
+
+    body .content .card.admin .save, body .content .card.admin .remove {
+        float: right;
+        cursor: pointer;
+        margin-top: 3px
+    }
+
+    body .content .card.admin hr {
+        margin: 20px 0
+    }
+
+    body .content .card.admin strong {
+        float: left;
+        display: block;
+        padding: 5px 0
+    }
+
+    body .content .card.admin input {
+        background: none;
+        width: 85%;
+        float: left;
+        padding-left: 0
+    }
+
+    @media only screen and (max-width: 780px) {
+        .card {
+            width: 96% !important
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        body .content .card.selected .links {
+            width: 100%;
+            float: left;
+            border-top: 1px solid #e1e8ed;
+            border-left: none;
+            padding: 0;
+        }
+        body .content .card.selected .links a {
+            float: left;
+            color: #a8aaad;
+            font-family: Helvetica;
+            font-size: 14px;
+            text-decoration: none;
+            margin: 0;
+            width: 50%;
+            padding: 10px;
+            text-align: center;
+        }
+        body .content .card.selected .links a:first-child {
+            border-right: 1px solid #e1e8ed;
+        }
+    }
+
+    @media only screen and (max-width: 420px) {
+        body .content .newCampaign button {
+            width: 100%;
+        }
+    }
