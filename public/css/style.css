@@ -60,7 +60,7 @@ body .preload .loader {
 body .content {
     z-index: 0;
     position: relative;
-    padding: 35px 40px;
+    padding: 35px 5%;
     max-width: 810px;
     margin: 0 auto;
 }
@@ -216,8 +216,6 @@ body .content form button::-moz-focus-inner, body .content form input::-moz-focu
 
 body .content form button {
     float: left;
-    background: #dbe0e4;
-    color: #55595c;
 }
 
 body .content form button:before {
@@ -231,6 +229,8 @@ body .content form button:before {
 
 body .content form button[type=submit] {
     float: right;
+    color: #ffffff;
+    background: #1DA1F1;
 }
 
 body .content form button[type=submit]:before {
@@ -243,14 +243,14 @@ body .content form button[type=submit]:before {
 }
 
 body .content form button {
-    background: #1DA1F1;
     border-radius: 5px;
-    color: #ffffff;
     font-size: 14px;
     padding: 13px 15px;
     width: 49%;
     font-weight: bold;
     cursor: pointer;
+    background: #dbe0e4;
+    color: #55595c;
 }
 
 body .content form .field.buttons {
