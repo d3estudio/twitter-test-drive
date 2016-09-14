@@ -2,7 +2,7 @@
 {% block content %}
 {% if success %}
 <div class="message">
-    <img class="icon" src="/img/sent.png" />
+    <img class="icon" src="/img/success.png" />
     <h1>#testdrive solicitado</h1>
     <p>Muito obrigado.<br>
     Agora é só esperar a nossa equipe entrar em contato para marcar a melhor data e local.</p>
@@ -11,13 +11,7 @@
 <a class="twitter-moment" href="{{momentUrl}}"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endif %}
 {% else %}
-<div class="header">
-    <img class="logo" src="https://twitter.com/{{handle}}/profile_image?size=original" />
-    <p class="name">{{realName}}</p>
-    <p class="handle">@{{handle}}</p>
-</div>
-<h1>Para marcar o seu #testdrive é bem fácil. Complete esse formulário que a gente te retorna com algumas opções.</h1>
-<form class="validate" action="/{{handle}}/{{campaign}}" method="POST">
+<form class="validate" id="campaign" action="/{{handle}}/{{campaign}}" method="POST">
     {% if errors %}
     <ul class="errors">
         {% for error in errors %}
@@ -25,32 +19,46 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <div class="field">
-        <input id="name" name="name" type="text" value="{{ name }}" tabindex="1" placeholder="Nome Completo">
+
+    <div class="formSize campaignHeader">
+        <img class="logo" src="/img/twitter.png" />
+        <div class="field">
+            <h2>Tesla Motors</h2>
+            <h3>@teslamotors</h3>
+        </div>
+        <div class="field">
+            <p id="campaignName">Nome da campanha grande para testar quebra de linha</p>
+        </div>
+        <div class="field">
+            <p id="campaignDescription">Descrição da campanha grande para testar quebra de linha</p>
+        </div>
     </div>
-    <div class="field">
-        <input id="email" name="email" type="email" value="{{ email }}" tabindex="2" autocorrect="off" autocapitalize="off" placeholder="Email">
+
+    <div class="customFields">
+        <div class="field">
+            <input type="text" value="" placeholder="Nome do campo" />
+        </div>
+        <div class="field">
+            <input type="text" value="" placeholder="Nome do campo" />
+        </div>
+        <div class="field">
+            <input type="text" value="" placeholder="Nome do campo" />
+        </div>
+        <div class="field">
+            <input type="text" value="" placeholder="Nome do campo" />
+        </div>
+        <div class="field">
+            <input type="text" value="" placeholder="Nome do campo" />
+        </div>
     </div>
-    <div class="field">
-        <input id="document" name="document" type="number" inputmode="numeric" pattern="\d*"  value="{{ document }}" tabindex="3" placeholder="CPF">
-    </div>
-    {% if extra_fields == "true" %}
-    <div class="field">
-        <input id="zip" name="zip" type="number" inputmode="numeric" pattern="\d*"  value="{{ zip }}" tabindex="3" placeholder="CEP">
-    </div>
-    <div class="field">
-        <input id="phone" name="phone" type="number" inputmode="numeric" pattern="\d*"  value="{{ phone }}" tabindex="3" placeholder="Telefone">
-    </div>
-    {% endif %}
-    <div class="field">
-        <input id="location" class="location" name="location" type="text"  value="{{ location }}" tabindex="4" placeholder="Localização">
-    </div>
-    <div class="field">
+
+    <div class="field buttons">
         <button type="submit">Enviar</button>
     </div>
 </form>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAL-iG-U-XFdlsekihk4QZK1WBy8YxNgAI"></script>
 <script type="text/javascript" src="/js/map.min.js"></script>
+<script type="text/javascript" src="/js/create.js"></script>
 {% endif %}
 
 {% endblock %}

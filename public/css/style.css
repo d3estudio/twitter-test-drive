@@ -65,6 +65,60 @@ body .content {
     margin: 0 auto;
 }
 
+
+/* public form - START */
+
+body .content #campaign .campaignHeader {
+    border-radius: 0;
+    border: 0;
+}
+
+body .content #campaign .campaignHeader .field {
+    margin: 0 auto 5px;
+}
+
+body .content #campaign .campaignHeader .field:first-of-type {
+    margin-top: 35px;
+    padding: 0;
+}
+
+body .content #campaign .campaignHeader .field h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #a5a5a5;
+}
+
+body .content #campaign #campaignName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body .content #campaign #campaignDescription {
+    font-size: 16px;
+    color: #a5a5a5;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #55acee;
+}
+
+body .content #campaign .customFields .field input {
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #ccd6dd;
+}
+
+body .content #campaign button[type=submit] {
+    float: none;
+    width: 35%;
+}
+
+body .content #campaign .buttons {
+    text-align: center;
+}
+
+
+/* public form - END */
+
 body .content .formSize {
     margin: 0 auto;
     width: 96%;
@@ -102,7 +156,7 @@ body .content .campaignHeader .field input {
 }
 
 body .content .campaignHeader .field:first-of-type {
-    width: 35%;
+    width: auto;
     margin-top: 58px;
     padding: 0;
 }
@@ -156,13 +210,13 @@ body .content form button::-moz-focus-inner, body .content form input::-moz-focu
     padding: 0
 }
 
-body .content form button:first-child {
+body .content form button {
     float: left;
     background: #dbe0e4;
     color: #55595c;
 }
 
-body .content form button:first-child:before {
+body .content form button:before {
     content: "";
     width: 20px;
     height: 15px;
@@ -171,11 +225,11 @@ body .content form button:first-child:before {
     margin-right: 5px;
 }
 
-body .content form button:last-child {
+body .content form button[type=submit] {
     float: right;
 }
 
-body .content form button:last-child:before {
+body .content form button[type=submit]:before {
     content: "";
     width: 12px;
     height: 15px;
@@ -415,5 +469,8 @@ body .content .message input {
         margin-top: 10px;
         width: 100%;
         float: none !important;
+    }
+    body .content #campaign button[type=submit] {
+        width: 100%;
     }
 }

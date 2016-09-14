@@ -30,7 +30,7 @@ export default class IndexController {
                         if (result) {
                             context['extra_fields'] = result.extra_fields;
                         }
-                        return res.render('create.html', context);
+                        return res.render('automaker.html', context);
                     });
             })
             .catch(ex => Utils.recordError(ex));
