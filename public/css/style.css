@@ -116,6 +116,10 @@ body .content #campaign .buttons {
     text-align: center;
 }
 
+body .content #campaign .customFields {
+    margin: 10px auto 31px;
+}
+
 
 /* public form - END */
 
