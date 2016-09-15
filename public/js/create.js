@@ -7,9 +7,9 @@ $('.addField a').click(function(e) {
     var html = $('.toClone').clone();
 
     if(name !== '' && type !== 'Type') {
+        customFieldRules(html.find('input'), type);
+
         html.removeClass('toClone');
-        html.find('input').attr('type', type);
-        html.find('input').attr('placeholder', name);
         $('.customFields').append(html);
 
         $('.newField input').val('');
@@ -40,3 +40,15 @@ $('.newField select').each(function() {
         $(this).parent('.field').addClass('active');
     }
 });
+
+function customFieldRules(input, type) {
+    switch (type) {
+        case 'cpf':
+            input.mask('999.999.999-99');
+            break;
+        default:
+            input.attr('type', type);
+            break;
+    }
+    input.attr('placeholder', name);
+}
