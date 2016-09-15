@@ -6,7 +6,7 @@ $('.addField a').click(function(e) {
     var type = $('.newField select option:selected').val();
     var html = $('.toClone').clone();
 
-    if(name !== '' || type !== 'Type') {
+    if(name !== '' && type !== 'Type') {
         html.removeClass('toClone');
         html.find('input').attr('type', type);
         html.find('input').attr('placeholder', name);
