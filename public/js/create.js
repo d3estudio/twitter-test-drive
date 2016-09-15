@@ -10,6 +10,8 @@ $('.addField a').click(function(e) {
         customFieldRules(html.find('input'), type);
 
         html.removeClass('toClone');
+        html.find('input').attr('placeholder', name);
+        
         $('.customFields').append(html);
 
         $('.newField input').val('');
@@ -23,24 +25,6 @@ $('body').on('click', '.close', function(e) {
     $(this).parent().remove();
 })
 
-$('.newField select').each(function() {
-    $(this).on('focus', function() {
-        $(this).parent('.field').addClass('active');
-        $(this).parent('.field').removeClass('error');
-    });
-    $(this).on('blur', function() {
-        if ($(this).find('option:selected') == 'Type') {
-            $(this).parent('.field').removeClass('active');
-            $(this).parent('.field').addClass('error');
-        } else {
-            $(this).parent('.field').removeClass('error');
-        }
-    });
-    if ($(this).find('option:selected') !== 'Type') {
-        $(this).parent('.field').addClass('active');
-    }
-});
-
 function customFieldRules(input, type) {
     switch (type) {
         case 'cpf':
@@ -50,5 +34,4 @@ function customFieldRules(input, type) {
             input.attr('type', type);
             break;
     }
-    input.attr('placeholder', name);
 }

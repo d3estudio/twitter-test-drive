@@ -394,7 +394,7 @@ body .content form .field.error label {
     color: #FF8080
 }
 
-body .content form .field.error input {
+body .content form .field.error input, body .content form .field.error textarea {
     border-bottom: 1px solid #FF8080
 }
 

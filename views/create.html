@@ -33,14 +33,14 @@
 
     <div class="customFields">
         <div class="field toClone">
-            <input type="text" value="" placeholder="">
+            <input type="text" value="" novalidate placeholder="">
             <a href="#" class="close">&#215</a>
         </div>
     </div>
 
     <div class="newField">
         <div class="field">
-            <input type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Nome do Campo">
+            <input type="text" value="{{ momentsLink }}" tabindex="4" novalidate placeholder="Nome do Campo">
             <select>
                 <option disabled selected>Type</option>
                 <option value="text">Text</option>
@@ -62,7 +62,7 @@
         <textarea id="successMessage" name="successMessage" value="{{ successMessage }}" tabindex="5" placeholder="Mensagem de confirmação"></textarea>
     </div>
     <div class="field">
-        <input id="pixelLink" name="pixelLink" type="text" value="{{ momentsLink }}" tabindex="6" placeholder="Link de conversão">
+        <input id="pixelLink" name="pixelLink" novalidate type="text" value="{{ momentsLink }}" tabindex="6" placeholder="Link de conversão">
     </div>
     <div class="field buttons">
         <button>Visualizar formulário</button>

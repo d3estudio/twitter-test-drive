@@ -2,7 +2,7 @@ $(window).load(function() {
     $('.preload').fadeOut();
 });
 
-$('input').each(function() {
+$('input, textarea').each(function() {
     $(this).on('focus', function() {
         $(this).parent('.field').addClass('active');
         $(this).parent('.field').removeClass('error');
@@ -22,8 +22,8 @@ $('input').each(function() {
 
 $('.validate').submit(function() {
     var valid = true;
-    $(this).find('input').each(function() {
-        if ($(this).val() == '') {
+    $(this).find('input, textarea').each(function() {
+        if ($(this).val() == '' && !$(this).is('[novalidate]')) {
             valid = false;
             $(this).parent().addClass('error');
         } else {
