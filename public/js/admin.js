@@ -96,6 +96,15 @@ $('.logout').click(function(e) {
         .catch(function() { window.location.href = 'https://twitter.com'; });
 });
 
+$('#addCampaign').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $.post('/admin/{{targetHandle}}/create', function(data) {
+        console.log(data);
+    })
+})
+
 $('.extra_fields').change(function() {
     var val = $(this).prop('checked');
     var campaign = $(this).data('campaign');

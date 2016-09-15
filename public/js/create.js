@@ -11,7 +11,7 @@ $('.addField a').click(function(e) {
 
         html.removeClass('toClone');
         html.find('input').attr('placeholder', name);
-        
+
         $('.customFields').append(html);
 
         $('.newField input').val('');

@@ -1,0 +1,331 @@
+body .content form {
+    width: 100%
+}
+
+body .content form button, body .content form input, body .content form select, body .content form textarea {
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+    outline: 0;
+    border-radius: 0;
+    -webkit-appearance: none
+}
+
+body .content form button::-moz-focus-inner, body .content form input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+body .content form button {
+    float: left;
+}
+
+body .content form button:before {
+    content: "";
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    background: url('../img/icon_preview.png') no-repeat left bottom;
+    margin-right: 5px;
+}
+
+body .content form button[type=submit] {
+    float: right;
+    color: #ffffff;
+    background: #1DA1F1;
+}
+
+body .content form button[type=submit]:before {
+    content: "";
+    width: 12px;
+    height: 15px;
+    display: inline-block;
+    background: url('../img/icon_save.png') no-repeat left bottom;
+    margin-right: 5px;
+}
+
+body .content form button {
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 13px 15px;
+    width: 49%;
+    font-weight: bold;
+    cursor: pointer;
+    background: #dbe0e4;
+    color: #55595c;
+}
+
+body .content form .field.buttons {
+    margin-top: 40px;
+    height: 44px;
+}
+
+body .content form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+body .content form textarea {
+    padding: 10px;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 14px;
+    resize: none;
+    height: 70px;
+    background: #f9f9f9;
+}
+
+body .content form #momentsLink {
+    background: url('../img/moments.png') no-repeat 11px center;
+    padding: 10px 30px;
+}
+
+body .content form input.location {
+    background: url(../img/pin.png) left center no-repeat;
+    padding-left: 20px
+}
+
+body .content form .newField {
+    width: 96%;
+    margin: 31px auto 0;
+    padding: 0 12px;
+}
+
+body .content form .newField .field {
+    width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid #ccd6dd;
+    border-bottom: 1px solid #ccd6dd;
+}
+
+body .content form .newField .field input {
+    width: 79%;
+}
+
+body .content form .newField select {
+    background: #ecf1f5;
+    width: 20%;
+    font-size: 14px;
+    border: 1px solid #ccd6dd;
+    border-radius: 5px;
+    height: 38px;
+    -webkit-appearance: menulist;
+}
+
+body .content form .customFields {
+    margin: 31px auto;
+}
+
+body .content form .customFields .field input {
+    width: 95%;
+}
+
+body .content form .customFields .close {
+    text-decoration: none;
+    font-size: 23px;
+    color: #aaaaaa;
+    margin-right: 1%;
+    float: right;
+    margin-top: 4px;
+}
+
+body .content form .customFields .toClone {
+    display: none;
+}
+
+body .content form .field.addField {
+    text-align: right;
+    margin-bottom: 31px;
+    height: 32px;
+}
+
+body .content form .field.addField a {
+    float: right;
+    width: auto;
+    padding: 5px 15px 8px 10px;
+    background: #dbe0e4;
+    border-radius: 5px;
+    color: #55595c;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+body .content form .field.addField a:before {
+    content: "+";
+    background: none;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+body .content form .field {
+    position: relative;
+    padding: 0 12px;
+    width: 96%;
+    margin: 0 auto 8px auto;
+}
+
+body .content form .field input {
+    transition: 0.1s all linear
+}
+
+body .content form .field label {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    font-size: 12px;
+    color: #8899A6;
+    transition: 0.1s all linear;
+    cursor: text
+}
+
+body .content form .field.active label {
+    top: -10px
+}
+
+body .content form .field.error label {
+    color: #FF8080
+}
+
+body .content form .field.error input, body .content form .field.error textarea {
+    border-bottom: 1px solid #FF8080
+}
+
+body .content form .errors {
+    margin-bottom: 27px
+}
+
+body .content form .errors li {
+    color: #FF8080;
+    font-size: 14px;
+    padding: 5px 0
+}
+
+body .content .message {
+    position: relative;
+    margin-bottom: 30px;
+    margin: 30px auto 0 auto;
+    text-align: center;
+    max-width: 500px;
+}
+
+body .content .message .icon, body .content .message .reload {
+    margin: 10px 0 0px;
+    width: 37px;
+}
+
+body .content .message .reload {
+    margin-top: 40px
+}
+
+body .content .message h1 {
+    font-size: 18px;
+    color: #a8aaad;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+body .content .message p {
+    font-size: 16px;
+    color: #a8aaad;
+    margin-top: 10px;
+}
+
+body .content .message input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+body .content .formSize {
+    margin: 0 auto;
+    width: 96%;
+}
+
+body .content .campaignHeader {
+    border-radius: 5px;
+    background: transparent;
+    padding: 0;
+    border: 1px solid #e1e8ed;
+    margin-bottom: 12px;
+}
+
+body .content .campaignHeader .logo {
+    width: auto;
+    background: #e1e3e5;
+    margin: 12px 8px 12px 12px;
+    border-radius: 5px;
+    float: left;
+    padding: 21px;
+    height: 68px;
+}
+
+body .content .campaignHeader .field {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto 12px auto;
+}
+
+body .content .campaignHeader .field input {
+    border: none;
+    border-radius: 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccd6dd;
+}
+
+body .content .campaignHeader .field:first-of-type {
+    width: auto;
+    margin-top: 58px;
+    padding: 0;
+}
+
+body .content .campaignHeader .field:first-of-type input {
+    font-size: 18px;
+    color: #333;
+}
+
+body .content .campaignHeader .field input#campaignName {
+    font-size: 20px;
+    color: #333;
+}
+
+body .content .campaignHeader .field input#campaignDescription {
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 662px) {
+    body .content form .customFields .field input {
+        width: 92%;
+    }
+    body .content form .newField .field input {
+        width: 72%;
+    }
+    body .content form .newField select {
+        width: 26%;
+    }
+}
+
+@media (max-width: 540px) {
+    body .content form .field.buttons {
+        height: auto;
+        margin-top: 10px;
+    }
+    body .content form .field.buttons button {
+        margin-top: 10px;
+        width: 100%;
+        float: none !important;
+    }
+}
