@@ -1,15 +1,3 @@
-$('.logout').click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $.ajax({
-        url: '/session/delete/',
-        type: 'POST',
-        success: function() {
-            window.location = "https://www.twitter.com"
-        }
-    })
-});
-
 $('.save').click(function() {
     var handle = $('.handle').val();
     if (handle !== "") {
@@ -57,37 +45,6 @@ $('body').on('click', '.remove', function() {
     }
 });
 
-function saveMoment(element) {
-    $.post({
-        url: '/admin/users/moment',
-        data: {
-            url: element.val(),
-            campaign: element.data('campaign')
-        }
-    }).then(function(data) {
-        console.log(data);
-        if (data.success) {
-            element.parent().find('.moment').removeClass('editing').attr('src', '/img/saved.png');
-            setTimeout(function() {
-                element.parent().find('.moment').attr('src', '/img/edit.png');
-            }, 2000);
-        }
-    });
-}
-
-$('.moment').click(function() {
-    if ($(this).hasClass('editing')) {
-        saveMoment($(this).parent().find('.momentURL'));
-    } else {
-        $(this).addClass('editing').attr('src', '/img/save.png');
-        $(this).parent().find('.momentURL').focus();
-    }
-});
-
-$('.momentURL').keydown(function() {
-    $(this).parent().find('.moment').addClass('editing').attr('src', '/img/save.png');
-});
-
 $('.logout').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -104,22 +61,3 @@ $('#addCampaign').click(function(e) {
         console.log(data);
     })
 })
-
-$('.extra_fields').change(function() {
-    var val = $(this).prop('checked');
-    var campaign = $(this).data('campaign');
-    var handle = $(this).data('handle');
-    $.post({
-        url: '/admin/campaign/extra',
-        data: {
-            extra_fields: val,
-            handle: handle,
-            campaign: campaign
-        }
-    }).then(function(data) {
-        console.log(data);
-        if (data.success) {
-
-        }
-    });
-});
