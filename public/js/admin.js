@@ -100,7 +100,7 @@ $('#addCampaign').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
 
-    $.post('/admin/{{targetHandle}}/create', function(data) {
+    $.post('/admin/' + $(this).data('handle') + '/create', function(data) {
         console.log(data);
     })
 })
