@@ -61,9 +61,6 @@ $(function() {
     }
 
     $('#createForm').click(function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
         formFields();
     });
 
