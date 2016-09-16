@@ -46,10 +46,8 @@ $(function() {
 });
 
 $(function() {
-    $('#createForm').click(function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var result = {
+    var formFields = function() {
+        return {
             name: $('#campaignName').val(),
             description: $('#campaignDescription').val(),
             momentsUrl: $('#momentsLink').val(),
@@ -60,6 +58,23 @@ $(function() {
                     return { name: that.attr('placeholder'), type: that.attr('type') };
                 }).toArray()
         };
-        console.log(result);
+    }
+
+    $('#createForm').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        formFields();
+    });
+
+    $('#previewButton').click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var result = formFields();
+        result.handle = $('h2').text();
+
+        $('#preview input').val(JSON.stringify(result));
+        $('#preview').submit();
     });
 });
