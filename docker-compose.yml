@@ -1,6 +1,6 @@
 web:
   build: .
-  command: nodemon --exec "babel-node /app/src/index.js"
+  command: nodemon --exec "babel-node /app/src/index.js" -w "/app/src"
   links:
     - db
   volumes:
