@@ -52,18 +52,27 @@ app
     .engine('html', consolidate.swig);
 
 app.get('/admin', AdminController.index)
-    .get('/admin/users', AdminController.listAdmins)
-    .post('/admin/users', AdminController.addAdmin)
-    .post('/admin/users/moment', AdminController.updateMoment)
-    .post('/admin/campaign/extra', AdminController.extraFields)
-    .post('/admin/users/delete', AdminController.removeAdmin)
-    .get('/admin/download/:handle/:campaign/:type', AdminController.download)
-    .get('/admin/detail/:handle', AdminController.detail)
     .get('/session', SessionController.index)
     .get('/session/twitter', SessionController.callback)
     .post('/session/delete', SessionController.destroy)
-    .get('/:handle/:campaign', IndexController.automaker)
-    .post('/:handle/:campaign', IndexController.create);
+
+    .get('/admin/users', AdminController.listAdmins)
+    .post('/admin/users', AdminController.addAdmin)
+    .post('/admin/users/delete', AdminController.removeAdmin)
+
+    .get('/admin/:handle', AdminController.listCampaigns)
+    .get('/admin/:handle/create', AdminController.newCampaign)
+    // .post('/admin/:handle/:campaign/delete', AdminController.delete)
+    .get('/admin/:handle/all/json', AdminController.downloadAllJson)
+    .get('/admin/:handle/:campaign/:format', AdminController.download);
+    // .post('/admin/users/moment', AdminController.updateMoment)
+    // .post('/admin/campaign/extra', AdminController.extraFields)
+    // .get('/admin/download/:handle/:campaign/:type', AdminController.download)
+    // .get('/admin/detail/:handle', AdminController.detail)
+
+
+    // .get('/:handle/:campaign', IndexController.automaker)
+    // .post('/:handle/:campaign', IndexController.create);
 
 
 mongoose.connect(s.databaseUri);

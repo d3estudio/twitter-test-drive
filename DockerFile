@@ -1,12 +1,26 @@
 FROM ubuntu:14.04
 
-RUN apt-get update -yq && apt-get upgrade -yq && apt-get install -yq curl git ssh sshpass
-RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
-RUN apt-get -q -y install nodejs build-essential
+RUN apt-get update -yq && apt-get -yq install curl
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+RUN apt-get update -yq && \
+    apt-get install -yq \
+        build-essential \
+        git-core \
+        nodejs \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package.json /app/package.json
+COPY settings.json /app/settings.json
+RUN cd /app; npm install
+RUN npm install --global babel-cli
+RUN npm install --global nodemon
 
 COPY . /app
-RUN cd /app; npm install --global babel-cli
-RUN cd /app; npm install
 
 EXPOSE 3000
 CMD [ "babel-node", "/app/src/index.js" ]

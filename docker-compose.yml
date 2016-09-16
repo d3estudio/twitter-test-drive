@@ -1,11 +1,14 @@
 web:
   build: .
+  command: nodemon --exec "babel-node /app/src/index.js"
   links:
     - db
   volumes:
     - ./src:/app/src
     - ./public:/app/public
     - ./views:/app/views
+    - /app/node_modules
+    - ./settings.json:/app/settings.json
   ports:
     - "3000:3000"
 db:

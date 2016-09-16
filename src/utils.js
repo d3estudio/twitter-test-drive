@@ -4,6 +4,20 @@ import Settings from './models/settings';
 var sentryClient = null;
 
 export default class Utils {
+    static generateAdminViewBag(req, extra=null) {
+        let result = {
+            handle: req.session.handle,
+            secretKey: req.session.secretKey,
+            isSuperUser: req.session.isSuperUser,
+        };
+
+        if(!!extra) {
+            Object.assign(result, extra);
+        }
+
+        return result;
+    }
+
     static validateDocumentNumber(cpf) {
         var j = -1,
             i, add, rev;

@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Olá, @{{ handle }}</h1>
-{% for card in handles %}
-<div class="card">
+<h1>Greetings, @{{ handle }}!</h1>
+{% for c in campaigns %}
+<div class="card" data-campaign-id="{{c._id}}">
     <div class="campaignData">
-        <a class="detail" href="/admin/detail/{{card.handle}}">
-            <span class="campaignName">@{{card.handle}}</span>
+        <a class="detail" href="/admin/{{c._id}}">
+            <span class="campaignName">@{{c.name}}</span>
         </a>
     </div>
     <div class="links">
-        <a href="/admin/download/{{ card.handle }}/all/csv" target="_blank">
-            Visualizar CSV
+        <a href="/{{ c._id }}/csv" target="_blank">
+            Download CSV
         </a>
-        <a href="/admin/download/{{ card.handle }}/all/json" target="_blank">
-            Visualizar JSON
+        <a href="/{{ c._id }}/json" target="_blank">
+            Download JSON
         </a>
     </div>
 </div>

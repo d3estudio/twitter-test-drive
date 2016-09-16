@@ -1,37 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Olá, @{{ handle }}</h1>
+<h1>Greetings, @{{ handle }}!</h1>
 <div class="card selected">
-    <img class="logo" src="https://twitter.com/{{handle}}/profile_image?size=original" />
+    <img class="logo" src="https://twitter.com/{{targetHandle}}/profile_image?size=original" />
     <div class="links">
-        <a href="/admin/download/{{ targetHandle.handle }}/all/csv" target="_blank">
-            Visualizar CSV
+        <a href="/admin/{{targetHandle}}/all/csv" target="_blank">
+            Download CSV
         </a>
-        <a href="/admin/download/{{ targetHandle.handle }}/all/json" target="_blank">
-            Visualizar JSON
+        <a href="/admin/{{targetHandle}}/all/json" target="_blank">
+            Download JSON
         </a>
         <div class="clear"></div>
     </div>
-    <span class="handle">@{{targetHandle.handle}}</span>
-    <!-- <span class="key">{{targetHandle.secretKey.secretKey}}</span> -->
+    <span class="handle">@{{targetHandle}}</span>
 </div>
-{% for c in targetHandle.campaigns %}
-<div class="card">
+{% for c in campaigns %}
+<div class="card" data-campaign-id="{{ c.id }}">
     <div class="campaignData">
-        <span class="campaignName">{{ c }}</span>
-        <span class="linkURL" data-campaign="{{ c }}">{{ targetHandle.moments[c].url }}</span>
+        <span class="campaignName">{{ c.name }}</span>
+        <span class="linkURL">{{ c.momentsUrl }}</span>
     </div>
     <div class="links">
-        <a href="/admin/download/{{ targetHandle.handle }}/{{ c }}/csv" target="_blank">
-            Visualizar CSV
+        <a href="/admin/{{ targetHandle }}/{{ c.id }}/csv" target="_blank">
+            Download CSV
         </a>
-        <a href="/admin/download/{{ targetHandle.handle }}/{{ c }}/json" target="_blank">
-            Visualizar JSON
+        <a href="/admin/{{ targetHandle }}/{{ c.id }}/json" target="_blank">
+            Download JSON
         </a>
     </div>
 </div>
 {% endfor %}
 <div class="newCampaign">
-    <button data-handle="{{targetHandle.handle}}" id="addCampaign">Adicionar</button>
+    <button data-handle="{{targetHandle.handle}}" id="addCampaign">New Campaign</button>
 </div>
 {% endblock %}

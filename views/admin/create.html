@@ -9,7 +9,7 @@
     <input type="text" disabled value="kdjhasdkfjhsdkjfhklasdj" />
 </div>
 {% else %}
-<form class="validate" action="/{{handle}}/{{campaign}}" method="POST">
+<form class="validate" action="admin/{{handle}}/create" method="POST">
     {% if errors %}
     <ul class="errors">
         {% for error in errors %}
@@ -21,13 +21,13 @@
     <div class="formSize campaignHeader">
         <img class="logo" src="/img/twitter.png" />
         <div class="field">
-            <h2>handleTwitter{{ handleName }}</h2>
+            <h2>@{{ targetHandle }}</h2>
         </div>
         <div class="field">
-            <input id="campaignName" name="campaignName" type="text" value="{{ campaignName }}" tabindex="2" placeholder="Digite o nome da campanha">
+            <input id="campaignName" name="campaignName" type="text" value="{{ campaignName }}" tabindex="2" placeholder="Campaign Name">
         </div>
         <div class="field">
-            <input id="campaignDescription" name="campaignDescription" type="text" value="{{ campaignDescription }}" tabindex="3" placeholder="Digite a descrição da campanha">
+            <input id="campaignDescription" name="campaignDescription" type="text" value="{{ campaignDescription }}" tabindex="3" placeholder="Campaign description">
         </div>
     </div>
 
@@ -40,7 +40,7 @@
 
     <div class="newField">
         <div class="field">
-            <input type="text" value="{{ momentsLink }}" tabindex="4" novalidate placeholder="Nome do Campo">
+            <input type="text" value="{{ momentsLink }}" tabindex="4" novalidate placeholder="Field name">
             <select>
                 <option disabled selected>Type</option>
                 <option value="text">Text</option>
@@ -52,27 +52,26 @@
     </div>
 
     <div class="addField field">
-        <a href="#">Adicionar campo</a>
+        <a href="#">Add Field</a>
     </div>
 
     <div class="field">
-        <input id="momentsLink" name="momentsLink" type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Link do Moments">
+        <input id="momentsLink" name="momentsLink" type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Moments URL">
     </div>
     <div class="field">
-        <textarea id="successMessage" name="successMessage" value="{{ successMessage }}" tabindex="5" placeholder="Mensagem de confirmação"></textarea>
+        <textarea id="successMessage" name="successMessage" value="{{ successMessage }}" tabindex="5" placeholder="Success Message"></textarea>
     </div>
     <div class="field">
-        <input id="pixelLink" name="pixelLink" novalidate type="text" value="{{ momentsLink }}" tabindex="6" placeholder="Link de conversão">
+        <input id="pixelLink" name="pixelLink" novalidate type="text" value="{{ pixelLink }}" tabindex="6" placeholder="Conversion Link">
     </div>
     <div class="field buttons">
-        <button>Visualizar formulário</button>
-        <button type="submit">Salvar</button>
+        <button>Preview Form</button>
+        <button type="submit">Save</button>
     </div>
 </form>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAL-iG-U-XFdlsekihk4QZK1WBy8YxNgAI"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAL-iG-U-XFdlsekihk4QZK1WBy8YxNgAI"></script>
 <script type="text/javascript" src="/js/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="/js/map.min.js"></script>
 <script type="text/javascript" src="/js/create.js"></script>
 {% endif %}
-
 {% endblock %}

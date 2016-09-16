@@ -17,9 +17,9 @@
         <span class="menu">
             <ul class="submenu">
                 {% if isSuperUser %}
-                    <li><a href="/admin/users/">Administradores</a></li>
+                    <li><a href="/admin/users/">Administrators</a></li>
                 {% endif %}
-                <li><a href="/logout/" class="logout">Sair</a></li>
+                <li><a href="/logout/" class="logout">Logout</a></li>
             </ul>
         </a>
     </div>
@@ -27,7 +27,7 @@
         {% block content %}{% endblock %}
         <div class="clear"></div>
     </div>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
     <script src="/js/admin.js"></script>
 </body>
