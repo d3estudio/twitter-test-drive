@@ -52,12 +52,3 @@ $('.logout').click(function(e) {
         .then(function() { window.location.href = 'https://twitter.com'; })
         .catch(function() { window.location.href = 'https://twitter.com'; });
 });
-
-$('#addCampaign').click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    $.post('/admin/' + $(this).data('handle') + '/create', function(data) {
-        console.log(data);
-    })
-})

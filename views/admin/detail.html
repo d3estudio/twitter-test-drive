@@ -4,9 +4,6 @@
 <div class="card selected">
     <img class="logo" src="https://twitter.com/{{targetHandle}}/profile_image?size=original" />
     <div class="links">
-        <a href="/admin/{{targetHandle}}/all/csv" target="_blank">
-            Download CSV
-        </a>
         <a href="/admin/{{targetHandle}}/all/json" target="_blank">
             Download JSON
         </a>
@@ -31,6 +28,6 @@
 </div>
 {% endfor %}
 <div class="newCampaign">
-    <button data-handle="{{targetHandle.handle}}" id="addCampaign">New Campaign</button>
+    <a id="newCampaign" href="/admin/{{targetHandle}}/create" target="_blank">New Campaign</a>
 </div>
 {% endblock %}

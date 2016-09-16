@@ -30,13 +30,13 @@ body .content form button:before {
     margin-right: 5px;
 }
 
-body .content form button[type=submit] {
+body .content form button#createForm {
     float: right;
     color: #ffffff;
     background: #1DA1F1;
 }
 
-body .content form button[type=submit]:before {
+body .content form button#createForm:before {
     content: "";
     width: 12px;
     height: 15px;
