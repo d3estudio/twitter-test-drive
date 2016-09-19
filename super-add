@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ "$1" != '' ]]; then
+    docker-compose exec db mongo twitter-tdd --eval "db.superusers.insert({ handle: '$1', parent: '$1' })"
+else
+    echo "Please provide your twitter handle. Eg: super-add heyvito"
+fi
