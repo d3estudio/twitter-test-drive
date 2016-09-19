@@ -40,6 +40,7 @@
     "mongoose": "^4.4.7",
     "node-twitter-api": "^1.7.0",
     "raven": "^0.10.0",
+    "slug": "^0.9.1",
     "swig": "^1.4.2"
   },
   "ava": {
