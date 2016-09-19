@@ -107,6 +107,10 @@ body .content #campaign .customFields .field input {
     border-bottom: 1px solid #ccd6dd;
 }
 
+body .content #campaign .customFields .field.error input {
+    border-bottom: 1px solid #FF8080;
+}
+
 body .content #campaign button[type=submit] {
     float: none;
     width: 35%;

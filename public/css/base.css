@@ -277,6 +277,7 @@ body .content .campaignHeader .logo {
     margin: 12px 8px 12px 12px;
     border-radius: 5px;
     float: left;
+    width: 68px;
     height: 68px;
 }
 
@@ -323,6 +324,23 @@ body .content .campaignHeader .field input#campaignDescription {
     }
     body .content form .newField select {
         width: 26%;
+    }
+    body .content {
+        padding: 35px 5% !important;
+    }
+    body .content .campaignHeader .field:first-of-type {
+        text-align: center;
+        width: 100%;
+        margin-top: 17px;
+    }
+    body .content .campaignHeader .field:first-of-type h2 {
+        font-size: 17px;
+    }
+    body .content .campaignHeader .logo {
+        float: none;
+        margin: 12px auto;
+        text-align: center;
+        display: block;
     }
 }
 
