@@ -53,7 +53,7 @@
     <div class="customFields">
         {% for f in fields %}
         <div class="field">
-            <input type="{{ f.type }}" name="{{ f.fieldName }}" value="" placeholder="{{ f.name }}" />
+            <input type="{{ f.type }}" data-type="{{ f.type }}" name="{{ f.fieldName }}" value="" placeholder="{{ f.name }}" />
         </div>
         {% endfor %}
     </div>

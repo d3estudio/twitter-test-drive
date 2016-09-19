@@ -30,6 +30,7 @@ $(function() {
         var newItem = newItemSource.clone().removeClass('toClone'),
             newItemField = newItem.find('input').attr('placeholder', name);
         applyCustomFieldRules(newItemField, type);
+        newItem.attr('data-selected-type', type);
         customFields.append(newItem);
         typeSource.val('Type');
         nameSource.val('');
@@ -54,8 +55,9 @@ $(function() {
             confirmationMessage: $('#successMessage').val(),
             conversionUrl: $('#pixelLink').val(),
             fields: $('.customFields').find('.field:not(.toClone)').map(function() {
-                    var that = $(this).find('input');
-                    return { name: that.attr('placeholder'), type: that.attr('type') };
+                    var that = $(this)
+                    var field = that.find('input');
+                    return { name: field.attr('placeholder'), type: that.attr('data-selected-type') };
                 }).toArray()
         };
     }
