@@ -69,14 +69,6 @@ app.get('/admin', AdminController.index)
     .post('/admin/preview', IndexController.preview)
     .get('/:handle/:cid/:slug', IndexController.campaign)
     .post('/:handle/:cid/:slug', IndexController.campaignCommit);
-    // .post('/admin/users/moment', AdminController.updateMoment)
-    // .post('/admin/campaign/extra', AdminController.extraFields)
-    // .get('/admin/download/:handle/:campaign/:type', AdminController.download)
-    // .get('/admin/detail/:handle', AdminController.detail)
-
-
-    // .get('/:handle/:campaign', IndexController.automaker)
-    // .post('/:handle/:campaign', IndexController.create);
 
 
 mongoose.connect(s.databaseUri);
