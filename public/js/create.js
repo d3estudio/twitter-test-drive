@@ -75,4 +75,6 @@ $(function() {
         $('#preview input').val(JSON.stringify(result));
         $('#preview').submit();
     });
+
+    $('input[name="CPF"]').mask('999.999.999-99');
 });

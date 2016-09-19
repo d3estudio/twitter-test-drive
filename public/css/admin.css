@@ -217,6 +217,8 @@
         float: left;
         font-size: 14px;
         color: #a8aaad;
+        height: 16px;
+        display: inline-block;
     }
 
     body .content .card a img {

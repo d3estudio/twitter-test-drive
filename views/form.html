@@ -9,6 +9,7 @@
 <a class="twitter-moment" href="{{momentUrl}}"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endif %}
 {% else %}
+<img src="{{ conversionLink }}" width="1" height="1" />
 <form class="validate" id="campaign" action="{{ action }}" method="POST">
     {% if errors %}
     <ul class="errors">
@@ -55,6 +56,7 @@
         <button type="submit">Enviar</button>
     </div>
 </form>
+<script type="text/javascript" src="/js/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="/js/create.js"></script>
 {% endif %}
 

@@ -211,7 +211,7 @@ body .content form .errors li {
     padding: 5px 0
 }
 
-body .content .message {
+body .content . {
     position: relative;
     margin-bottom: 30px;
     margin: 30px auto 0 auto;
@@ -219,7 +219,7 @@ body .content .message {
     max-width: 500px;
 }
 
-body .content .message .icon, body .content .message .reload {
+body .content . .icon, body .content .message .reload {
     margin: 10px 0 0px;
     width: 37px;
 }
@@ -233,6 +233,7 @@ body .content .message h1 {
     color: #a8aaad;
     margin-top: 10px;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 body .content .message p {
