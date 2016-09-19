@@ -20,8 +20,11 @@ export default class AdminController {
 
         return Campaign.find({ handle: user })
             .then(camps => {
-                viewBag.campaigns = camps;
-                console.log(viewBag);
+                viewBag.campaigns = camps.map(c => {
+                    const path = [user, c._id.toString(), c.slug];
+                    c.url = `${req.protocol}://${req.get('host')}/${path.join('/')}`
+                    return c;
+                });
                 return res.render('admin/detail.html', viewBag);
             });
     }
