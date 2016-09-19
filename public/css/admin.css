@@ -212,13 +212,16 @@
         margin-bottom: -1px;
     }
 
-    body .content .card .linkURL {
-        margin-top: 6px;
+    body .content .card input[type="text"].linkURL {
+        padding: 5px;
+        width: 100%;
         float: left;
         font-size: 14px;
-        color: #a8aaad;
-        height: 16px;
-        display: inline-block;
+        color: #AEAEAE;
+        background: none;
+        border: 1px solid #e7e7e7;
+        height: 29px;
+        margin-top: 5px;
     }
 
     body .content .card a img {
@@ -417,9 +420,6 @@
             width: 50%;
             padding: 10px;
             text-align: center;
-        }
-        body .content .card.selected .links a:first-child {
-            border-right: 1px solid #e1e8ed;
         }
     }
 

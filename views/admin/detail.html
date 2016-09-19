@@ -15,7 +15,7 @@
 <div class="card" data-campaign-id="{{ c.id }}">
     <div class="campaignData">
         <span class="campaignName">{{ c.name }}</span>
-        <span class="linkURL">{{ c.momentsUrl }}</span>
+        <input class="linkURL" type="text" value="{{ c.url }}" />
     </div>
     <div class="links">
         <a href="/admin/{{ targetHandle }}/{{ c.id }}/csv" target="_blank">

@@ -224,6 +224,10 @@ body .content . .icon, body .content .message .reload {
     width: 37px;
 }
 
+body .content .message {
+    text-align: center;
+}
+
 body .content .message .reload {
     margin-top: 40px
 }
