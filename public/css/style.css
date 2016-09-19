@@ -148,6 +148,13 @@ body .content h1 {
     margin-left: 81px
 }
 
+@media (max-width: 662px) {
+    body .content #campaign .campaignHeader .field:first-of-type {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+}
+
 @media (max-width: 540px) {
     body .content #campaign button[type=submit] {
         width: 100%;
