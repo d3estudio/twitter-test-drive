@@ -288,7 +288,13 @@ export default class AdminController {
                 formData.slug = slug(formData.name)
                 return Campaign.create(formData);
             })
-            .then(c => res.redirect(`/admin/${user}`))
+            .then(c => {
+                viewBag.success = true;
+                var path = [user, c.id.toString(), c.slug];
+                viewBag.campaignUrl = `${req.protocol}://${req.get('host')}/${path.join('/')}`;
+                return viewBag;
+            })
+            .then(bag => res.render('admin/create.html', viewBag))
             .catch(ex => console.log(ex));
     }
 }
