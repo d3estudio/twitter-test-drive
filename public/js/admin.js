@@ -48,7 +48,6 @@ $('body').on('click', '.remove', function() {
 $('.logout').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $.post('/logout')
-        .then(function() { window.location.href = 'https://twitter.com'; })
-        .catch(function() { window.location.href = 'https://twitter.com'; });
+    $.post('/session/delete')
+        .done(function( data ) { window.location.href = 'https://twitter.com'; });
 });

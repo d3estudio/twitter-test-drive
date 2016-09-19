@@ -15,7 +15,7 @@
 <div class="card" data-campaign-id="{{ c.id }}">
     <div class="campaignData">
         <span class="campaignName">{{ c.name }}</span>
-        <input class="linkURL" type="text" value="{{ c.url }}" />
+        <input onClick="this.setSelectionRange(0, this.value.length)" class="linkURL" readonly type="text" value="{{ c.url }}" />
     </div>
     <div class="links">
         <a href="/admin/{{ targetHandle }}/{{ c.id }}/csv" target="_blank">

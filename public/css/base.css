@@ -17,6 +17,10 @@ body .content form button::-moz-focus-inner, body .content form input::-moz-focu
     padding: 0
 }
 
+body .content .conversionLink {
+    opacity: 0;
+}
+
 body .content form button {
     float: left;
 }
