@@ -61,7 +61,7 @@ $(function() {
     }
 
     $('#createForm').click(function(e) {
-        formFields();
+        $('#formData').val(JSON.stringify(formFields()));
     });
 
     $('#previewButton').click(function(e) {

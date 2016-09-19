@@ -7,6 +7,7 @@ import Log from '../models/log';
 import * as Promise from 'bluebird';
 import json2csv from 'json2csv';
 import Utils from '../utils';
+import slug from 'slug';
 
 export default class AdminController {
     static listCampaigns(req, res) {
@@ -249,8 +250,45 @@ export default class AdminController {
             return res.redirect('/session');
         }
 
-        let user = req.session.isSuperUser && req.params.handle ? req.params.handle : req.session.handle;
+        const user = req.session.isSuperUser && req.params.handle ? req.params.handle : req.session.handle;
         const viewBag = Utils.generateAdminViewBag(req, { targetHandle: user });
         return res.render('admin/create.html', viewBag);
+    }
+
+    static newCampaignCommit(req, res) {
+        if (!req.session.handle) {
+            return res.redirect('/session');
+        }
+
+        const user = req.session.isSuperUser && req.params.handle ? req.params.handle : req.session.handle;
+        const viewBag = Utils.generateAdminViewBag(req, { targetHandle: user });
+        const formData = JSON.parse(req.body.formData);
+        Object.assign(viewBag, formData);
+        if(formData.fields.length < 1) {
+            viewBag.errors = ['You must define at least one field!'];
+            console.log(viewBag);
+            return res.render('admin/create.html', viewBag);
+        }
+
+        return Campaign.findOne({ handle: user, name: formData.name })
+            .then(c => {
+                if(!!c) {
+                    viewBag.errors = ['There is already a campaign with the provided name stored for the given handle.'];
+                    res.render('admin/create.html', viewBag);
+                    return Promise.reject();
+                }
+                return true;
+            })
+            .then(() => {
+                formData.fields = formData.fields.map(f => {
+                    f.fieldName = slug(f.name);
+                    return f;
+                });
+                formData.handle = user;
+                formData.slug = slug(formData.name)
+                return Campaign.create(formData);
+            })
+            .then(c => res.redirect(`/admin/${user}`))
+            .catch(ex => console.log(ex));
     }
 }
