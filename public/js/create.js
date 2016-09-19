@@ -69,7 +69,8 @@ $(function() {
         e.stopPropagation();
 
         var result = formFields();
-        result.handle = $('h2').text();
+        result.handle = $('h2').text().replace(/@/g, '');
+        result.preview = true;
 
         $('#preview input').val(JSON.stringify(result));
         $('#preview').submit();

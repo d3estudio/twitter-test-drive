@@ -3,10 +3,25 @@ import Inquiry from '../models/inquiry';
 import Moment from '../models/moment';
 import https from 'https';
 import cheerio from 'cheerio';
+import slug from 'slug';
 
 var realNames = {};
 
 export default class IndexController {
+    static preview(req, res) {
+        const viewBag = JSON.parse(req.body.previewForm);
+        return IndexController.nameOf(viewBag.handle)
+            .then(n => {
+                viewBag.action = "/admin/preview";
+                viewBag.handleName = n;
+                viewBag.fields = viewBag.fields.map(f => {
+                    f.fieldName = slug(f.name);
+                    return f;
+                });
+                return res.render('form.html', viewBag);
+            });
+    }
+
     static automaker(req, res) {
         if (!req.params.handle || !req.params.campaign) {
             return res.status(400).send('Invalid request.');
@@ -133,7 +148,7 @@ export default class IndexController {
                         resolve(realNames[handle]);
                     });
                 }).on('error', () => {
-                    resolve('');
+                    resolve(handle);
                 });
             });
         }

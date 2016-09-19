@@ -64,7 +64,8 @@ app.get('/admin', AdminController.index)
     .get('/admin/:handle/create', AdminController.newCampaign)
     // .post('/admin/:handle/:campaign/delete', AdminController.delete)
     .get('/admin/:handle/all/json', AdminController.downloadAllJson)
-    .get('/admin/:handle/:campaign/:format', AdminController.download);
+    .get('/admin/:handle/:campaign/:format', AdminController.download)
+    .post('/admin/preview', IndexController.preview);
     // .post('/admin/users/moment', AdminController.updateMoment)
     // .post('/admin/campaign/extra', AdminController.extraFields)
     // .get('/admin/download/:handle/:campaign/:type', AdminController.download)
