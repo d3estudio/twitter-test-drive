@@ -11,6 +11,10 @@ $(function() {
             case 'cpf':
                 input.mask('999.999.999-99');
                 break;
+            case 'date':
+                input.mask('99/99/9999');
+                input.attr('type', 'text');
+                break;
             default:
                 input.attr('type', type);
                 break;
@@ -35,6 +39,10 @@ $(function() {
         typeSource.val('Type');
         nameSource.val('');
     });
+
+    $('input').each(function(){
+        applyCustomFieldRules($(this), $(this).attr('type').toLowerCase());
+    })
 });
 
 
@@ -77,6 +85,4 @@ $(function() {
         $('#preview input').val(JSON.stringify(result));
         $('#preview').submit();
     });
-
-    $('input[name="CPF"]').mask('999.999.999-99');
 });
