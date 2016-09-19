@@ -1,5 +1,6 @@
 import Utils from '../utils';
 import Inquiry from '../models/inquiry';
+import Campaign from '../models/campaign';
 import Moment from '../models/moment';
 import https from 'https';
 import cheerio from 'cheerio';
@@ -20,6 +21,58 @@ export default class IndexController {
                 });
                 return res.render('form.html', viewBag);
             });
+    }
+
+    static campaign(req, res, next) {
+        let viewBag;
+        return Campaign.findById(req.params.cid)
+            .then(c => {
+                if(!c) {
+                    console.log(`Campaign ${req.params.cid} not found.`);
+                    next();
+                    return Promise.reject();
+                }
+                return c;
+            })
+            .then(campaign => {
+                viewBag = campaign;
+                return IndexController.nameOf(campaign.handle);
+            })
+            .then(name => {
+                viewBag.handleName = name;
+                return viewBag;
+            })
+            .then(viewBag => res.render('form.html', viewBag));
+    }
+
+    static campaignCommit(req, res, next) {
+        let viewBag;
+        return Campaign.findById(req.params.cid)
+            .then(c => {
+                if(!c) {
+                    console.log(`Campaign ${req.params.cid} not found.`);
+                    next();
+                    return Promise.reject();
+                }
+                return c;
+            })
+            .then(campaign => {
+                viewBag = campaign;
+                return IndexController.nameOf(campaign.handle);
+            })
+            .then(name => {
+                viewBag.handleName = name;
+                return viewBag;
+            })
+            .then(viewBag => {
+                return Inquiry.create({ handle: viewBag.handle, campaign: viewBag.id, data: req.body })
+                    .then(i => {
+                        viewBag.success = true;
+                        return viewBag;
+                    })
+            })
+            .then(viewBag => res.render('form.html', viewBag))
+            .catch(ex => console.log(ex));
     }
 
     static automaker(req, res) {
