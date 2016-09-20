@@ -51,3 +51,20 @@ $('.logout').click(function(e) {
     $.post('/session/delete')
         .done(function( data ) { window.location.href = 'https://twitter.com'; });
 });
+
+
+$('.validate').submit(function() {
+    var valid = true;
+    $(this).find('input, textarea').each(function() {
+        if ($(this).val() == '' && !$(this).is('[novalidate]')) {
+            valid = false;
+            $(this).parent().addClass('error');
+        } else {
+            $(this).parent().removeClass('error');
+        }
+    });
+    if (valid) {
+        $('.preload').fadeIn();
+    }
+    return valid;
+});

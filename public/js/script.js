@@ -21,19 +21,3 @@ $('input, textarea').each(function() {
         }
     }
 });
-
-$('.validate').submit(function() {
-    var valid = true;
-    $(this).find('input, textarea').each(function() {
-        if ($(this).val() == '' && !$(this).is('[novalidate]')) {
-            valid = false;
-            $(this).parent().addClass('error');
-        } else {
-            $(this).parent().removeClass('error');
-        }
-    });
-    if (valid) {
-        $('.preload').fadeIn();
-    }
-    return valid;
-});

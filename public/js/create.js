@@ -9,11 +9,11 @@ $(function() {
     var applyCustomFieldRules = function(input, type) {
         switch (type) {
             case 'cpf':
-                input.mask('999.999.999-99');
+                $('[data-selected-type="' + type + '"] input').mask('999.999.999-99');
                 break;
             case 'date':
-                input.mask('99/99/9999');
-                input.attr('type', 'text');
+                $('[data-selected-type="' + type + '"] input').mask('99/99/9999');
+                $('[data-selected-type="' + type + '"] input').attr('type', 'text');
                 break;
             default:
                 input.attr('type', type);
@@ -32,17 +32,15 @@ $(function() {
         }
 
         var newItem = newItemSource.clone().removeClass('toClone'),
-            newItemField = newItem.find('input').attr('placeholder', name);
-        applyCustomFieldRules(newItemField, type);
+            newItemField = newItem.find('input');
+
+        newItemField.attr('placeholder', name);
         newItem.attr('data-selected-type', type);
+        applyCustomFieldRules(newItemField, type);
         customFields.append(newItem);
         typeSource.val('Type');
         nameSource.val('');
     });
-
-    $('input').each(function(){
-        applyCustomFieldRules($(this), $(this).attr('type').toLowerCase());
-    })
 });
 
 

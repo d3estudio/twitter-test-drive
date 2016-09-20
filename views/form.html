@@ -53,7 +53,7 @@
     <div class="customFields">
         {% for f in fields %}
         <div class="field">
-            <input type="{{ f.type }}" data-type="{{ f.type }}" name="{{ f.fieldName }}" value="" placeholder="{{ f.name }}" />
+            <input type="{{ f.type }}" data-selected-type="{{ f.type }}" name="{{ f.fieldName }}" value="" placeholder="{{ f.name }}" />
         </div>
         {% endfor %}
     </div>
@@ -63,7 +63,8 @@
     </div>
 </form>
 <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
-<script type="text/javascript" src="/js/create.js"></script>
+<script type="text/javascript" src="/js/jquery.cpf.min.js"></script>
+<script type="text/javascript" src="/js/form.js"></script>
 {% endif %}
 
 {% endblock %}
