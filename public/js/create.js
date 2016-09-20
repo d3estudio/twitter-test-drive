@@ -101,6 +101,5 @@ $(function() {
         e.clearSelection();
     });
 
-
     $("#copy-link").tooltip();
 });

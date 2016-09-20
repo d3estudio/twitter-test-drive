@@ -68,3 +68,24 @@ $('.validate').submit(function() {
     }
     return valid;
 });
+
+$(function() {
+    var clipboard = new Clipboard('.linkURL');
+
+    clipboard.on('success', function(e) {
+        $(e.trigger).tooltip('hide')
+            .attr('data-original-title', "Copied.")
+            .tooltip('fixTitle')
+            .tooltip('show');
+
+        setTimeout(function(){
+            $(".linkURL").tooltip('hide')
+                .attr('data-original-title', "Click to copy.")
+                .tooltip('fixTitle')
+        }, 1000)
+
+        e.clearSelection();
+    });
+
+    $(".linkURL").tooltip();
+})

@@ -15,7 +15,7 @@
 <div class="card" data-campaign-id="{{ c.id }}">
     <div class="campaignData">
         <span class="campaignName">{{ c.name }}</span>
-        <input onClick="this.setSelectionRange(0, this.value.length)" class="linkURL" readonly type="text" value="{{ c.url }}" />
+        <input onClick="this.setSelectionRange(0, this.value.length)" data-placement="bottom" title="Click to copy." data-clipboard-text="{{ c.url }}" class="linkURL" readonly data-toggle='tooltip' type="text" value="{{ c.url }}" />
     </div>
     <div class="links">
         <a href="/admin/{{ targetHandle }}/{{ c.id }}/csv" target="_blank">
