@@ -5,6 +5,7 @@ import Moment from '../models/moment';
 import https from 'https';
 import cheerio from 'cheerio';
 import slug from 'slug';
+import unfurl from 'unfurl-url';
 
 var realNames = {};
 
@@ -95,5 +96,15 @@ export default class IndexController {
                 });
             });
         }
+    }
+
+    static pictureFor(req, res) {
+        unfurl.url(`https://twitter.com/${req.params.handle}/profile_image?size=original`, function(error, url) {
+            if(error) {
+                res.redirect('/img/twitter.png');
+            } else {
+                res.redirect(url);
+            }
+        });
     }
 }

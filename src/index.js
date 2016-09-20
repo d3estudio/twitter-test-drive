@@ -55,6 +55,7 @@ app.get('/admin', AdminController.index)
     .get('/session', SessionController.index)
     .get('/session/twitter', SessionController.callback)
     .post('/session/delete', SessionController.destroy)
+    .get('/profilePicture/:handle', IndexController.pictureFor)
 
     .get('/admin/users', AdminController.listAdmins)
     .post('/admin/users', AdminController.addAdmin)
