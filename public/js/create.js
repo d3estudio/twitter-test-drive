@@ -83,4 +83,22 @@ $(function() {
         $('#preview input').val(JSON.stringify(result));
         $('#preview').submit();
     });
+
+    var clipboard = new ZeroClipboard( document.getElementById("copy-link") );
+    clipboard.on( "ready", function( readyEvent ) {
+        clipboard.on( "aftercopy", function( event ) {
+            $("#copy-link").tooltip('hide')
+                .attr('data-original-title', "Copied.")
+                .tooltip('fixTitle')
+                .tooltip('show');
+
+            setTimeout(function(){
+                $("#copy-link").tooltip('hide')
+                    .attr('data-original-title', "Click to copy.")
+                    .tooltip('fixTitle')
+            }, 1000)
+        });
+    });
+
+    $("#copy-link").tooltip();
 });
