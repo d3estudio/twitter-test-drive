@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Greetings, @{{ handle }}!</h1>
 <div class="card selected">
-    <img class="logo" src="https://twitter.com/{{targetHandle}}/profile_image?size=original" />
+    <img class="logo" src="/profilePicture/{{targetHandle}}" />
     <div class="links">
         <a href="/admin/{{targetHandle}}/all/json" target="_blank">
             Download JSON
