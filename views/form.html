@@ -15,7 +15,6 @@
 </script>
 {% endif %}
 {% else %}
-<img class="conversionLink" src="{{ conversionLink }}" width="1" height="1" />
 <form class="validate" id="campaign" action="{{ action }}" method="POST">
     {% if errors %}
     <ul class="errors">
@@ -65,6 +64,14 @@
 <script type="text/javascript" src="/js/jquery.mask.min.js"></script>
 <script type="text/javascript" src="/js/jquery.cpf.min.js"></script>
 <script type="text/javascript" src="/js/form.js"></script>
+
+{% if conversionUrl %}
+    <input id="conversionPixel" type="hidden" value="{{ conversionUrl }}" />
+    <script type="text/javascript">
+        var pixel = $('#conversionPixel').val();
+        document.write( pixel );
+    </script>
 {% endif %}
 
+{% endif %}
 {% endblock %}
