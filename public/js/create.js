@@ -101,5 +101,5 @@ $(function() {
         e.clearSelection();
     });
 
-    $("#copy-link").tooltip();
+    $('[data-toggle="tooltip"]').tooltip()
 });

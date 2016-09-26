@@ -21,6 +21,23 @@ body .content .conversionLink {
     opacity: 0;
 }
 
+body .content form .tooltipIcon {
+    background: #fff;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: 5px;
+    right: -14px;
+    color: #1DA1F1;
+    cursor: default;
+}
+
 body .content form button {
     float: left;
 }
