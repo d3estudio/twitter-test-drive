@@ -58,7 +58,7 @@
     </div>
 
     <div class="field buttons">
-        <button id="createForm" type="submit">{{ submitText }}</button>
+        <button id="createForm" type="submit">{{ submitText|default("Submit") }}</button>
     </div>
 </form>
 <script type="text/javascript" src="/js/jquery.mask.min.js"></script>

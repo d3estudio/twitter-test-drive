@@ -60,6 +60,7 @@ $(function() {
             momentsUrl: $('#momentsLink').val(),
             confirmationMessage: $('#successMessage').val(),
             conversionUrl: $('#pixelLink').val(),
+            submitText: $('#submitText').val() || null,
             fields: $('.customFields').find('.field:not(.toClone)').map(function() {
                     var that = $(this)
                     var field = that.find('input');

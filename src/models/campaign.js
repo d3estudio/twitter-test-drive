@@ -9,7 +9,8 @@ const campaignSchema = mongoose.Schema({
     fields:                 { type: Array, required: true },
     momentsUrl:             { type: String, required: false },
     confirmationMessage:    { type: String, required: true },
-    conversionUrl:          { type: String, required: false }
+    conversionUrl:          { type: String, required: false },
+    submitText:             { type: String, required: false },
 });
 
 campaignSchema.methods.getAllInquiries = function() {
