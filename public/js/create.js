@@ -101,6 +101,4 @@ $(function() {
 
         e.clearSelection();
     });
-
-    $('[data-toggle="tooltip"]').tooltip()
 });

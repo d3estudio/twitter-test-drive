@@ -3,19 +3,37 @@
 <h1>Greetings, @{{ handle }}!</h1>
 <div class="card selected">
     <img class="logo" src="/profilePicture/{{targetHandle}}" />
+    <div class="tooltipBox handleBox">
+        <span class="handle">@{{targetHandle}}</span>
+        <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="This is your @user that is carried automatically from Twitter.
+You need to be logged into Twitter to access this page">?</span>
+    </div>
     <div class="links">
-        <a href="/admin/{{targetHandle}}/all/json" target="_blank">
-            Download JSON
-        </a>
+        <div class="tooltipBox">
+            <a href="/admin/{{targetHandle}}/all/json" target="_blank">
+                Download JSON
+            </a>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="Use this button to download all data from all your
+campaigns in a JSON format.">?</span>
+        </div>
         <div class="clear"></div>
     </div>
-    <span class="handle">@{{targetHandle}}</span>
+</div>
+<div class="newCampaign">
+    <a id="newCampaign" href="/admin/{{targetHandle}}/create" target="_blank">New Campaign</a>
 </div>
 {% for c in campaigns %}
 <div class="card" data-campaign-id="{{ c.id }}">
     <div class="campaignData">
-        <span class="campaignName">{{ c.name }}</span>
-        <input onClick="this.setSelectionRange(0, this.value.length)" data-placement="bottom" title="Click to copy." data-clipboard-text="{{ c.url }}" class="linkURL" readonly data-toggle='tooltip' type="text" value="{{ c.url }}" />
+        <div class="tooltipBox">
+            <span class="campaignName">{{ c.name }}</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="The name you created for your campaign">?</span>
+        </div>
+        <div class="tooltipBox inputs">
+            <input onClick="this.setSelectionRange(0, this.value.length)" data-placement="bottom" title="" data-clipboard-text="{{ c.url }}" class="linkURL" readonly data-toggle='tooltip' type="text" value="{{ c.url }}" />
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="The URL of the form you created. Click on it to copy the URL
+and paste it in the URL field of your Twitter Ads campaign.">?</span>
+        </div>
     </div>
     <div class="links">
         <a href="/admin/{{ targetHandle }}/{{ c.id }}/csv" target="_blank">
@@ -27,7 +45,4 @@
     </div>
 </div>
 {% endfor %}
-<div class="newCampaign">
-    <a id="newCampaign" href="/admin/{{targetHandle}}/create" target="_blank">New Campaign</a>
-</div>
 {% endblock %}

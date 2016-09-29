@@ -21,23 +21,6 @@ body .content .conversionLink {
     opacity: 0;
 }
 
-body .content form .tooltipIcon {
-    background: #fff;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    line-height: 22px;
-    font-weight: bold;
-    text-decoration: none;
-    position: absolute;
-    top: 11px;
-    right: -14px;
-    color: #1DA1F1;
-    cursor: default;
-}
-
 body .content form button {
     float: left;
 }
@@ -123,10 +106,12 @@ body .content form .newField .field {
     padding: 8px 0;
     border-top: 1px solid #ccd6dd;
     border-bottom: 1px solid #ccd6dd;
+    margin-bottom: 12px;
 }
 
 body .content form .newField .field input {
-    width: 79%;
+    width: 100%;
+    position: absolute;
 }
 
 body .content form .newField select {
@@ -135,12 +120,17 @@ body .content form .newField select {
     font-size: 14px;
     border: 1px solid #ccd6dd;
     border-radius: 5px;
-    height: 38px;
+    height: 42px;
+    vertical-align: top;
     -webkit-appearance: menulist;
 }
 
 body .content form .customFields {
     margin: 31px auto;
+}
+
+body .content form .customFields .field {
+    margin-bottom: 10px;
 }
 
 body .content form .customFields .field input {
@@ -179,6 +169,15 @@ body .content form .field.addField a {
     text-decoration: none;
 }
 
+body .content form .field.addField .tooltipBox {
+    float: right;
+}
+
+body .content form .field.addField .tooltipIcon {
+    margin-right: 10px;
+    margin-top: 7px;
+}
+
 body .content form .field.addField a:before {
     content: "+";
     background: none;
@@ -193,7 +192,7 @@ body .content form .field {
     position: relative;
     padding: 0 12px;
     width: 96%;
-    margin: 0 auto 8px auto;
+    margin: 0 auto 12px;
 }
 
 body .content form .field input {
@@ -218,8 +217,8 @@ body .content form .field.error label {
     color: #FF8080
 }
 
-body .content form .field.error input, body .content form .field.error textarea {
-    border-bottom: 1px solid #FF8080
+body .content form .error input, body .content form .error textarea {
+    border-bottom: 1px solid #FF8080 !important;
 }
 
 body .content form .errors {
@@ -306,7 +305,13 @@ body .content .campaignHeader .logo {
 body .content .campaignHeader .field {
     display: inline-block;
     width: 100%;
-    margin: 0 auto 12px auto;
+    margin: 0 auto;
+}
+
+body .content .campaignHeader .field:last-child {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto 15px auto;
 }
 
 body .content .campaignHeader .field input {
@@ -316,10 +321,19 @@ body .content .campaignHeader .field input {
     border-bottom: 1px solid #ccd6dd;
 }
 
+body .content .campaignHeader .tooltipBox .tooltipIcon {
+    margin-top: 6px;
+}
+
 body .content .campaignHeader .field:first-of-type {
-    width: auto;
+    width: 60%;
     margin-top: 58px;
     padding: 0;
+    margin-bottom: 5px;
+}
+
+body .content .campaignHeader .field:first-of-type h2 {
+    float: left;
 }
 
 body .content .campaignHeader .field:first-of-type input {
@@ -330,6 +344,11 @@ body .content .campaignHeader .field:first-of-type input {
 body .content .campaignHeader .field input#campaignName {
     font-size: 20px;
     color: #333;
+    position: absolute;
+}
+
+body .content .campaignHeader .tooltipBox.inputs .tooltipIcon {
+    margin-top: 10px;
 }
 
 body .content .campaignHeader .field input#campaignDescription {
@@ -340,9 +359,6 @@ body .content .campaignHeader .field input#campaignDescription {
 @media (max-width: 662px) {
     body .content form .customFields .field input {
         width: 92%;
-    }
-    body .content form .newField .field input {
-        width: 72%;
     }
     body .content form .newField select {
         width: 26%;
@@ -357,6 +373,8 @@ body .content .campaignHeader .field input#campaignDescription {
     }
     body .content .campaignHeader .field:first-of-type h2 {
         font-size: 17px;
+        float: none;
+        display: inline-block;
     }
     body .content .campaignHeader .logo {
         float: none;

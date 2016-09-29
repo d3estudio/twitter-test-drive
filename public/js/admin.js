@@ -80,12 +80,12 @@ $(function() {
 
         setTimeout(function(){
             $(".linkURL").tooltip('hide')
-                .attr('data-original-title', "Click to copy.")
+                .attr('data-original-title', "")
                 .tooltip('fixTitle')
         }, 1000)
 
         e.clearSelection();
     });
 
-    $(".linkURL").tooltip();
+    $('[data-toggle="tooltip"]').tooltip()
 })
