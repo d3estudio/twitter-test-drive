@@ -94,8 +94,14 @@ asking for their info">?</span>
 
     </div>
     <div class="field buttons">
-        <button id="previewButton" type="submit">Preview Form</button>
-        <button id="createForm">Save</button>
+        <div class="tooltipBox previewButton">
+            <button id="previewButton" type="submit">Preview Form</button>
+            <span class="tooltipIcon blank" data-placement="top" data-toggle="tooltip" title="Click here to preview the form as it’s going to be shown to the users. Make necessary changes before saving.">?</span>
+        </div>
+        <div class="tooltipBox createForm">
+            <button id="createForm">Save</button>
+            <span class="tooltipIcon blank" data-placement="top" data-toggle="tooltip" title="This is the final step. Saved forms can’t be edited.">?</span>
+        </div>
     </div>
 </form>
 <form id="preview" action="/admin/preview" method="POST" target="_blank">

@@ -53,16 +53,47 @@ body .content form button {
     border-radius: 5px;
     font-size: 14px;
     padding: 13px 15px;
-    width: 49%;
+    width: 100%;
     font-weight: bold;
     cursor: pointer;
     background: #dbe0e4;
     color: #55595c;
+    position: absolute;
 }
 
 body .content form .field.buttons {
     margin-top: 40px;
     height: 44px;
+}
+
+body .content form .field.buttons .tooltipBox {
+    width: 49%;
+    position: relative;
+    height: 46px;
+}
+
+body .content form .field.buttons .tooltipBox .tooltipIcon {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    position: relative;
+}
+
+body .content form .field.buttons .tooltipBox.previewButton {
+    float: left;
+}
+
+body .content form .field.buttons .tooltipBox.createForm {
+    float: right;
+}
+
+body .content form .field.buttons .tooltipBox.createForm .tooltipIcon {
+    background: rgba(255, 255, 255, 0.6);
+    color: rgb(47, 160, 228);
+}
+
+body .content form .field.buttons .tooltipBox.createForm .tooltipIcon:hover {
+    background: #fff;
 }
 
 body .content form input {
@@ -389,7 +420,7 @@ body .content .campaignHeader .field input#campaignDescription {
         height: auto;
         margin-top: 10px;
     }
-    body .content form .field.buttons button {
+    body .content form .field.buttons .tooltipBox {
         margin-top: 10px;
         width: 100%;
         float: none !important;
