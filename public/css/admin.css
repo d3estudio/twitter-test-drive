@@ -219,6 +219,11 @@ body .content .card input[type="text"].linkURL {
     background: none;
     border: 1px solid #e7e7e7;
     height: 29px;
+    transition: padding 0.2s;
+}
+
+body .content .card input[type="text"].linkURL:hover {
+    padding-right: 27px;
 }
 
 body .content .card a img {
@@ -376,7 +381,7 @@ body .content .tooltipBox.textarea textarea {
 
 body .content .tooltipBox.inputs .tooltipIcon, body .content .tooltipBox.textarea .tooltipIcon {
     float: right;
-    margin-right: 10px;
+    margin-right: 4px;
     margin-top: 10px;
     z-index: 9;
     position: relative;
