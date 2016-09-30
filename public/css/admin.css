@@ -482,6 +482,9 @@ body .content form #newCampaign {
     body .content .newField .tooltipBox.inputs {
         width: 72%
     }
+    body .content .card span.campaignName {
+        float: none;
+    }
 }
 
 @media only screen and (max-width: 600px) {

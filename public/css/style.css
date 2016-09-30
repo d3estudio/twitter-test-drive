@@ -86,6 +86,7 @@ body .content #campaign .campaignHeader .field h3 {
     font-size: 14px;
     font-weight: normal;
     color: #a5a5a5;
+    clear: both;
 }
 
 body .content #campaign #campaignName {
@@ -114,6 +115,7 @@ body .content #campaign .customFields .field.error input {
 body .content #campaign button[type=submit] {
     float: none;
     width: 35%;
+    position: relative;
 }
 
 body .content #campaign .buttons {

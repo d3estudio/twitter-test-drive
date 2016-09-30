@@ -74,7 +74,7 @@ body .content form .field.buttons .tooltipBox {
 
 body .content form .field.buttons .tooltipBox .tooltipIcon {
     float: right;
-    margin-top: 15px;
+    margin-top: 13px;
     margin-right: 10px;
     position: relative;
 }
@@ -388,6 +388,9 @@ body .content .campaignHeader .field input#campaignDescription {
 }
 
 @media (max-width: 662px) {
+    body .content .tooltipBox .tooltipIcon {
+        display: none;
+    }
     body .content form .customFields .field input {
         width: 92%;
     }
