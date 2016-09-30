@@ -429,3 +429,7 @@ body .content .campaignHeader .field input#campaignDescription {
         float: none !important;
     }
 }
+
+.blank+.tooltip.top>.tooltip-inner, .blank+.tooltip.bottom>.tooltip-inner, .blank+.tooltip.right>.tooltip-inner, .blank+.tooltip.left>.tooltip-inner {
+    padding: 10px;
+}
