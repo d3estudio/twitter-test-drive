@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Greetings, @{{ handle }}!</h1>
+<div class="newCampaign">
+    <a id="newCampaign" href="/admin/{{handle}}/create" target="_blank">New Campaign</a>
+</div>
+
 {% for handle in handles %}
 <div class="card">
     <div class="campaignData">
         <a class="detail" href="/admin/{{handle}}">
-            <span class="campaignName">@{{handle}}</span>
+            <div class="tooltipBox">
+                <span class="campaignName">@{{handle}}</span>
+                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="The brand campaigns">?</span>
+            </div>
         </a>
     </div>
     <div class="links">
@@ -15,7 +22,4 @@
     </div>
 </div>
 {% endfor %}
-<div class="newCampaign">
-    <a id="newCampaign" href="/admin/{{handle}}/create" target="_blank">New Campaign</a>
-</div>
 {% endblock %}
