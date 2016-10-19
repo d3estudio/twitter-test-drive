@@ -87,5 +87,7 @@ $(function() {
         e.clearSelection();
     });
 
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip({
+        placement: 'right'
+    })
 })

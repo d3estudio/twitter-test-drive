@@ -1,0 +1,17 @@
+/* TEAM */
+    UI designer: Raphael Fagundes
+    Twitter: @raphaelcomph
+    From: São Paulo, São Paulo, Brazil
+
+    Frontend developer: Robson Coelho
+    Twitter: @robsonamc
+    From: São Paulo, São Paulo, Brazil
+
+    Backend developer: Victor Gama
+    Twitter: @heyvito
+    From: São Paulo, São Paulo, Brazil
+    www: https://vito.io
+
+/* DEVELOPED WITH <3 AT */
+    D3 Estudio
+    http://d3.do
