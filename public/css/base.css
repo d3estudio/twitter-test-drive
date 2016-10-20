@@ -437,3 +437,7 @@ body .content .campaignHeader .field input#campaignDescription {
 .tooltip-inner {
     text-align: left!important;
 }
+
+.tooltip {
+    min-width: 180px;
+}

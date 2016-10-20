@@ -162,3 +162,7 @@ body .content h1 {
         width: 100%;
     }
 }
+
+.tooltip {
+    min-width: 180px;
+}
