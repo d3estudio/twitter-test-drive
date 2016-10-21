@@ -19,7 +19,8 @@ $('.save').click(function() {
                 }
             }).then(function(handle) {
                 if (handle.success) {
-                    $('.card.admin').eq(1).append(
+                    $('.handle').val('');
+                    $('.card.admin').eq(1).prepend(
                         '<div class="handles"><img src="/img/remove.png" class="remove" data-handle="' + handle.handle + '" /><span class="username">@' + handle.handle + '</span><hr /></div>'
                     );
                 }
