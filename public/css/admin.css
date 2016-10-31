@@ -525,7 +525,17 @@ body .content form #newCampaign {
     }
 }
 
-
+.popover-content {
+    padding: 0px 14px 9px 14px!important;
 }
 
+.popover-title {
+    padding: 8px 14px 0px 14px!important;
+    background: none!important;
+    border-bottom: none!important;
+}
+
+.popover {
+    max-width: 300px!important;
+    min-width: 200px!important;
 }

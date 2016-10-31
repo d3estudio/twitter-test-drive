@@ -23,14 +23,14 @@
         <div class="field">
             <div class="tooltipBox">
                 <h2>@{{ targetHandle }}</h2>
-                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="This is your @user that is carried automatically from Twitter. This is going to show the end user as the brand who is
+                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Target Handle" data-content="This is your @user that is carried automatically from Twitter. This is going to show the end user as the brand who is
 asking for their info">?</span>
             </div>
         </div>
         <div class="field">
             <div class="tooltipBox inputs">
                 <input id="campaignName" type="text" value="{{ name }}" tabindex="2" placeholder="Campaign Name">
-                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="This is your campaign's title and description. Use the description part to tell the user what information you're asking and why.">?</span>
+                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Campaign Name" data-content="This is your campaign's title and description. Use the description part to tell the user what information you're asking and why.">?</span>
             </div>
         </div>
         <div class="field">
@@ -49,7 +49,7 @@ asking for their info">?</span>
         <div class="field">
             <div class="tooltipBox inputs">
                 <input type="text" value="{{ momentsLink }}" tabindex="4" novalidate placeholder="Field name">
-                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="These are the questions you are going to ask the users to fill out. The questions are going to show inside the field and they are all mandatory.">?</span>
+                <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Field Name" data-content="These are the questions you are going to ask the users to fill out. The questions are going to show inside the field and they are all mandatory.">?</span>
             </div>
             <select>
                 <option disabled selected>Type</option>
@@ -64,43 +64,43 @@ asking for their info">?</span>
     <div class="addField field">
         <div class="tooltipBox">
             <a href="#">Add Field</a>
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="Click here to add new fields. Options are: text (use this option for any type of information you need, with no syntax validation), email (system checks if syntax is correct - if there’s a @ sign, for instance), date (validates date in a DD/MM/YYYY) format, CPF (identification valid in Brazil only)">?</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Add Field" data-content="Click here to add new fields. Options are: text (use this option for any type of information you need, with no syntax validation), email (system checks if syntax is correct - if there’s a @ sign, for instance), date (validates date in a DD/MM/YYYY) format, CPF (identification valid in Brazil only)">?</span>
         </div>
     </div>
 
     <div class="field">
         <div class="tooltipBox inputs">
             <input id="momentsLink" novalidate type="text" value="{{ momentsLink }}" tabindex="4" placeholder="Moments URL">
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="Insert a Moment to be displayed after the Thank You message. If no Moment is added, window will close after 4 seconds and user will return to Twitter.">?</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Moments Link" data-content="Insert a Moment to be displayed after the Thank You message. If no Moment is added, window will close after 4 seconds and user will return to Twitter.">?</span>
         </div>
     </div>
     <div class="field">
         <div class="tooltipBox inputs">
             <input id="submitText" maxlength="20" type="text" value="{{ submitText }}" tabindex="5" placeholder="Submit Text Button">
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="You can customize the text in the submit button so it displays in your language.">?</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Submit Button Text" data-content="You can customize the text in the submit button so it displays in your language.">?</span>
         </div>
     </div>
     <div class="field">
         <div class="tooltipBox textarea">
             <textarea id="successMessage" tabindex="6" placeholder="Success Message">{{ confirmationMessage }}</textarea>
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="Insert a Custom 'Thank you' message to be displayed after the user sends the form.">?</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Success Message" data-content="Insert a Custom 'Thank you' message to be displayed after the user sends the form.">?</span>
         </div>
     </div>
     <div class="field">
         <div class="tooltipBox textarea">
             <textarea id="pixelLink" novalidate tabindex="7" placeholder="Conversion Pixel / Website Tag">{{ conversionUrl }}</textarea>
-            <span class="tooltipIcon blank" data-placement="top" data-toggle="tooltip" title="Insert Twitter Universal Website Tag here. The tag is crucial to track and optimize your campaign’s conversions.">?</span>
+            <span class="tooltipIcon blank" data-placement="top" data-toggle="popover" title="Conversion Pixel / Website Tag" data-content="Insert Twitter Universal Website Tag here. The tag is crucial to track and optimize your campaign’s conversions.">?</span>
         </div>
 
     </div>
     <div class="field buttons">
         <div class="tooltipBox previewButton">
             <button id="previewButton" type="submit">Preview Form</button>
-            <span class="tooltipIcon blank" data-placement="top" data-toggle="tooltip" title="Click here to preview the form as it’s going to be shown to the users. Make necessary changes before saving.">?</span>
+            <span class="tooltipIcon blank" data-placement="top" data-toggle="popover" title="Preview Form" data-content="Click here to preview the form as it’s going to be shown to the users. Make necessary changes before saving.">?</span>
         </div>
         <div class="tooltipBox createForm">
             <button id="createForm">Save</button>
-            <span class="tooltipIcon blank" data-placement="top" data-toggle="tooltip" title="This is the final step. Saved forms can’t be edited.">?</span>
+            <span class="tooltipIcon blank" data-placement="top" data-toggle="popover" title="Save" data-content="This is the final step. Saved forms can’t be edited.">?</span>
         </div>
     </div>
 </form>

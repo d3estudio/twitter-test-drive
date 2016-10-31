@@ -91,4 +91,9 @@ $(function() {
     $('[data-toggle="tooltip"]').tooltip({
         placement: 'right'
     })
+
+    $('[data-toggle="popover"]').popover({
+        placement: 'right',
+        trigger: 'hover',
+    })
 })

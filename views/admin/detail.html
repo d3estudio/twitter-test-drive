@@ -5,7 +5,7 @@
     <img class="logo" src="/profilePicture/{{targetHandle}}" />
     <div class="tooltipBox handleBox">
         <span class="handle">@{{targetHandle}}</span>
-        <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="This is your @user that is carried automatically from Twitter.
+        <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Handle" data-content="This is your @user that is carried automatically from Twitter.
 You need to be logged into Twitter to access this page">?</span>
     </div>
     <div class="links">
@@ -13,7 +13,7 @@ You need to be logged into Twitter to access this page">?</span>
             <a href="/admin/{{targetHandle}}/all/json" target="_blank">
                 Download JSON
             </a>
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="Use this button to download all data from all your
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Download JSON" data-content="Use this button to download all data from all your
 campaigns in a JSON format.">?</span>
         </div>
         <div class="clear"></div>
@@ -27,11 +27,11 @@ campaigns in a JSON format.">?</span>
     <div class="campaignData">
         <div class="tooltipBox">
             <span class="campaignName">{{ c.name }}</span>
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="The name you created for your campaign">?</span>
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Campaign Name" data-content="The name you created for your campaign">?</span>
         </div>
         <div class="tooltipBox inputs">
             <input onClick="this.setSelectionRange(0, this.value.length)" data-placement="bottom" title="" data-clipboard-text="{{ c.url }}" class="linkURL" readonly data-toggle='tooltip' type="text" value="{{ c.url }}" />
-            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="tooltip" title="The URL of the form you created. Click on it to copy the URL
+            <span class="tooltipIcon blank" data-placement="bottom" data-toggle="popover" title="Campaign URL" data-content="The URL of the form you created. Click on it to copy the URL
 and paste it in the URL field of your Twitter Ads campaign.">?</span>
         </div>
     </div>
